@@ -1,0 +1,6 @@
+
+“	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æûâÀ8¬ è’é1J$4c49add9-e6ff-4390-baa7-ae8a93762deb
+—
+java:S2095Z"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‘°ï‡ÿÿÿÿÿ8Á è’é1J$398d34b4-41ad-4b01-90f1-8ccfec4676d0
+r	java:S106)"+Replace this use of System.out by a logger.(©þêÜúÿÿÿÿ8Ö è’é1J$fdb4f2e3-f3ea-4d8b-9115-0b388d75cdaa
+r	java:S106S"+Replace this use of System.out by a logger.(©þêÜúÿÿÿÿ8â è’é1J$7e604e1c-3aaa-4163-8baa-eeb895bf993d

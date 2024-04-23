@@ -1,0 +1,10 @@
+
+’
+java:S1192U"ODefine a constant instead of duplicating this literal "Database Error" 3 times.(ñ¸øØ8ÈÕÜ“é1J$ba5e0ec5-2d7b-4c35-be98-b09e6518d2ed
+¡	java:S116"ZRename this field "RendezVousTable" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕúÖºúÿÿÿÿ8ÎË“é1J$3291a9b6-8cda-47bc-8450-9e9b13e344b2
+
+java:S1450:"ZRemove the "dialogStage" field and declare it as a local variable in the relevant methods.(Ëù¥ä8‹ÖÜ“é1J$77fe5918-c144-416e-98e9-a48dc36a3844
+
+java:S1128"GRemove this unused import 'javafx.beans.property.SimpleDoubleProperty'.(Ğ†Üıúÿÿÿÿ8úúÍ”é1J$c2652ceb-bc0d-4162-807e-6ac33fe2b189
+r
+java:S1068:"/Remove this unused "dialogStage" private field.(Ëù¥ä8ÚË“é1J$8d9a51de-d483-4e77-8c48-459d023e2028

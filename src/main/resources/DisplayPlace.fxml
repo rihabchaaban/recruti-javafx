@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DisplayPlaceController">
+    <ScrollPane prefHeight="400.0" prefWidth="600.0">
+        <content>
+            <AnchorPane prefWidth="456.0">
+                <VBox alignment="CENTER" spacing="10">
+                    <VBox fx:id="placeList" alignment="CENTER" spacing="5">
+
+                    </VBox>
+                </VBox>
+                 <Label alignment="CENTER" layoutX="174.0" layoutY="2.0" prefHeight="56.0" prefWidth="198.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Place List" textFill="#f22f2f">
+               <font>
+                  <Font name="Calibri Light Italic" size="51.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="400.0" fitWidth="707.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../212.jpeg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+                 <Button alignment="CENTER_RIGHT" layoutX="452.0" layoutY="328.0" onAction="#navigateToRDVInterface" prefHeight="42.0" prefWidth="100.0" text="RendezVous">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="327.0" layoutY="328.0" mnemonicParsing="false" onAction="#map" prefHeight="42.0" prefWidth="112.0" text="Google map">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+                 <Button alignment="CENTER" layoutX="402.0" layoutY="200.0" onAction="#navigateToAddInterface" prefHeight="40.0" prefWidth="87.0" text="Add" textFill="#4a4242">
+               <font>
+                  <Font name="Calibri Bold Italic" size="19.0" />
+               </font>
+            </Button>
+            </AnchorPane>
+        </content>
+    </ScrollPane>
+   <VBox layoutX="348.0" layoutY="14.0" prefHeight="42.0" prefWidth="42.0" />
+   <VBox layoutX="400.0" layoutY="14.0" prefHeight="56.0" prefWidth="87.0" />
+</AnchorPane>

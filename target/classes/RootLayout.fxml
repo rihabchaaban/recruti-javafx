@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+	<!-- Top: Menu Bar -->
+	<top>
+		<MenuBar>
+			<!-- Your menu items here -->
+		</MenuBar>
+	</top>
+
+	<!-- Left: Tool Bar or Navigation Pane -->
+	<left>
+		<ToolBar>
+			<!-- Your toolbar buttons or navigation elements here -->
+		</ToolBar>
+	</left>
+
+	<!-- Center: Main Content Area -->
+	<center>
+		<VBox alignment="CENTER" VBox.vgrow="ALWAYS">
+			<Label text="Welcome to Your Application!" />
+			<!-- Add more content here -->
+		</VBox>
+	</center>
+
+	<!-- Right: Optional Sidebar -->
+	<right>
+		<VBox alignment="CENTER">
+			<!-- Sidebar content here -->
+		</VBox>
+	</right>
+
+	<!-- Bottom: Status Bar or Footer -->
+	<bottom>
+		<ToolBar>
+			<Label text="Status: Ready" />
+		</ToolBar>
+	</bottom>
+</BorderPane>

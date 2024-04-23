@@ -1,0 +1,16 @@
+
+“	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æõ¢˜8Ç¸Ñ’é1J$2fed31cc-749b-4f5b-9b31-1d2f79b9eef7
+“	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æõ¢˜8Ç¸Ñ’é1J$ef7a1c34-a53e-4e96-9b9c-45e962e3964c
+’	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±®ÿi8‡ÏÒ’é1J$8d3fe62e-d7d9-4d55-9a83-cae2e0724b7e
+’	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±®ÿi8‡ÏÒ’é1J$8ae46a54-b7e3-4a73-979b-33482fbce212
+“	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï°‹‘8ÎÿÒ’é1J$0bed3140-b150-4aba-9cd0-3da0d0268837
+“	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™¶ŞÉ8ÏÿÒ’é1J$a780d082-8f73-40ba-b52d-45037c87b135
+–	java:S116"ORename this field "Lieu" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ…ï°ÿÿÿÿÿ8¹¬Ï’é1J$1b4aa750-4586-4eba-a459-6eaab1eafdf4
+ 	java:S116"YRename this field "email_candidat" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ…ï°ÿÿÿÿÿ8¹¬Ï’é1J$21cfe717-0e22-4623-a66b-1794062003b6
+¤	java:S116"]Rename this field "email_representant" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ…ï°ÿÿÿÿÿ8ãĞ’é1J$9f714bbc-cb2d-49c7-8614-3a8ee04fd059
+“
+java:S1659"KDeclare "email_candidat" and all following declarations on a separate line.(ğ…ï°ÿÿÿÿÿ8½¬Ï’é1J$bbc8fa5a-e79c-4930-8b8e-2edd48aff577
+•	java:S1004"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÁË¬şÿÿÿÿ8Ú¸Ñ’é1J$b6a4f270-c210-4a6a-8bbd-e7c6e69d7d8c
+	java:S1008"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï°‹‘8Û¸Ñ’é1J$cdff016b-ff5a-4d83-a966-e6c6bde1e712
+•	java:S100<"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡¸Ñÿÿÿÿÿ8İ¸Ñ’é1J$36831550-2bb7-4976-8dee-1cfbcf9f7711
+	java:S100@"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™¶ŞÉ8ß¸Ñ’é1J$ac12eecc-b75d-4495-9488-b01e510fb755

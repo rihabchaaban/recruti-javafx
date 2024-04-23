@@ -1,0 +1,23 @@
+.table-pane {
+    -fx-background-color: #f2f2f2;
+}
+
+.card-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-color: #c0c0c0;
+    -fx-border-width: 1px;
+}
+
+.table-view {
+    -fx-background-color: #f2f2f2;
+}
+
+.detail-pane {
+    -fx-background-color: #f2f2f2;
+}
+
+.form-pane {
+    -fx-background-color: white;
+    -fx-border-radius: 3px;
+}

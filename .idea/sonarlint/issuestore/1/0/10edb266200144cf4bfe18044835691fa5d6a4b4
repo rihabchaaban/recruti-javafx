@@ -1,0 +1,4 @@
+
+†	java:S112^"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚ÒéüÿÿÿÿJ$3d57c572-4607-4a3b-97d0-f409ca05596f
+Â
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(»õ¡éûÿÿÿÿJ$0015bf8f-2b2e-4290-bbc9-7cdd38d4d914
