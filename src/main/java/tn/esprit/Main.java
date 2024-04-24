@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
 
 //        PublicationService ps = new PublicationService();
-        System.out.println(2);
+//        System.out.println(ps.getAll());
         MediaService ps = new MediaService();
    //  Media media  = new Media("aaaaa","bbbbb",91);
    //     ps.add(media);

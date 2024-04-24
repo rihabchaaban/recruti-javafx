@@ -10,9 +10,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import tn.esprit.models.Commentaire;
+import tn.esprit.models.Like;
 import tn.esprit.models.Media;
 import tn.esprit.models.Publication;
 import tn.esprit.services.CommentaireService;
+import tn.esprit.services.LikeService;
 import tn.esprit.services.MediaService;
 import tn.esprit.services.PublicationService;
 
@@ -101,6 +103,7 @@ public class TemplatePublicationController {
     @FXML
     private TextArea captionpub;
     private boolean isEditing = false;
+    private boolean isLiked = false;
     private long startTime = 0;
 
     public HBox getMediaContainer() {
@@ -256,6 +259,25 @@ public void onEditClicked(MouseEvent mouseEvent) {
     }
     isEditing = !isEditing;
 }
+    @FXML
+    void onLikeContainerClicked(MouseEvent event) {
+        LikeService likeService = new LikeService();
+        Like like = new Like();
+            if(likeService.getLikeByIdPublicationAndIdUser(id,1)==null){
+            like.setUser_id(1);
+            like.setPublication_id(id);
+            likeService.add(like);
+            imgReaction.setImage(new Image("img/liked.png"));
+
+        } else {
+            like=likeService.getLikeByIdPublicationAndIdUser(id,1);
+            likeService.delete(like);
+            // Restaurer l'icône d'édition
+            imgReaction.setImage(new Image("img/disliked.png"));
+        }
+
+
+    }
 
 private String getImagePath(ImageView imageView) {
     Image image = imageView.getImage();

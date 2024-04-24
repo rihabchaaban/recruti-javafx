@@ -80,6 +80,23 @@ public class CommentaireService implements IService<Commentaire> {
 
         return commentaires;
     }
+    public int getNumberOfCommentsByIdPublication(int publicationId) {
+        String req = "SELECT COUNT(*) FROM `commentaire` WHERE `publication_id` = ?";
+        try (PreparedStatement pst = cnx.prepareStatement(req)) {
+            pst.setInt(1, publicationId);
+
+            try (ResultSet res = pst.executeQuery()) {
+                if (res.next()) {
+                    return res.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la récupération du nombre de commentaire par ID de publication.", e);
+        }
+
+        return 0;
+    }
+
     public static List<Commentaire> getCommentListByPublicationId(int publicationId) {
         List<Commentaire> commentaires = new ArrayList<>();
         String req = "SELECT * FROM Commentaire WHERE publication_id = ?";

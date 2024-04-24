@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import tn.esprit.models.Commentaire;
 import tn.esprit.models.Media;
 import tn.esprit.models.Publication;
+import tn.esprit.services.LikeService;
 import tn.esprit.services.MediaService;
 import tn.esprit.services.CommentaireService;
 import tn.esprit.services.PublicationService;
@@ -91,9 +92,7 @@ public class Profile implements Initializable {
         publication.setContenu(contenu);
 
         PublicationService publicationService = new PublicationService();
-
         int publicationId = publicationService.addAndGetId(publication);
-
 
         // If media files were selected, add them to the database
         if (!selectedMediaFiles.isEmpty()) {
@@ -191,6 +190,19 @@ return formattedDate;
                 controller.getCaptionpub().setText(publication.getContenu());
                 controller.setId(publication.getId());
 
+                //LIKE
+                LikeService likeService = new LikeService();
+                if(likeService.getLikeByIdPublicationAndIdUser(publication.getId(),1)==null)
+                {controller.getImgReaction().setImage(new Image("img/disliked.png"));}
+                else {
+                    controller.getImgReaction().setImage(new Image("img/liked.png"));
+                }
+                controller.getNbReactions().setText(String.valueOf(likeService.getNumberOfLikesByIdPublication(publication.getId())));
+
+
+
+
+
 
                 //MEDIAAAAA
                 List<Media> medias = MediaService.getMediaListByPublicationId(publication.getId());
@@ -247,8 +259,14 @@ return formattedDate;
 
                 //COMMENTAIRE
                 CommentaireService commentaireService = new CommentaireService();
+                controller.getNbComments().setText(String.valueOf(commentaireService.getNumberOfCommentsByIdPublication(publication.getId())));
                 List<Commentaire> commentaires = commentaireService.getCommentListByPublicationId(publication.getId());
                 double totalHeight = 0.0;
+                FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/newComment.fxml"));
+                    Node postNode2 = loader2.load();
+                    newCommentController controller2 = loader2.getController();
+                controller2.setId(publication.getId());
+                controller.getCommentContainer().getChildren().add(controller2.getnewCommentContainer());
                 for (Commentaire commentaire : commentaires) {
                     FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/Comment.fxml"));
                     try {
