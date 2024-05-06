@@ -1,11 +1,16 @@
 package tn.esprit.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import tn.esprit.models.Commentaire;
 import tn.esprit.models.Media;
 import tn.esprit.models.Publication;
@@ -13,6 +18,7 @@ import tn.esprit.services.CommentaireService;
 import tn.esprit.services.MediaService;
 import tn.esprit.services.PublicationService;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,6 +70,17 @@ public class CommentController {
             commentaireService.update(commentaire);
             // Restaurer l'icône d'édition
             edit.setImage(new Image("img/edit.png"));
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+                Parent root = loader.load();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle IOException (FXML loading error)
+            }
 
         }
         isEditing = !isEditing;
@@ -132,12 +149,10 @@ public class CommentController {
         alert.setHeaderText(null);
         alert.setContentText("Are you sure you want to delete this post?");
 
-        // Add buttons to the alert dialog
         ButtonType buttonTypeYes = new ButtonType("Yes");
         ButtonType buttonTypeNo = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
 
-        // Wait for user's response
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == buttonTypeYes) {
             try {
@@ -147,9 +162,19 @@ public class CommentController {
                 commentaire.setId(id);
                 System.out.println(id);
                 commentaireService.delete(commentaire);
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+                    Parent root = loader.load();
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
-                // Gérer l'exception en conséquence
+
             }
         }
 

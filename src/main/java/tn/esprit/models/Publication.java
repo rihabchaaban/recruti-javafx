@@ -1,8 +1,5 @@
 package tn.esprit.models;
 
-import javafx.scene.control.skin.DateCellSkin;
-
-import java.sql.Date;
 import java.sql.Timestamp;
 
 
@@ -11,6 +8,8 @@ public class Publication {
     private String contenu;
     private int id,user_id ;
     private Timestamp date_creationpub;
+
+
 
 //constructor
     public Publication() {

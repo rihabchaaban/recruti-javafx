@@ -1,14 +1,18 @@
 package tn.esprit.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import tn.esprit.models.Commentaire;
 import tn.esprit.models.Like;
 import tn.esprit.models.Media;
@@ -18,6 +22,7 @@ import tn.esprit.services.LikeService;
 import tn.esprit.services.MediaService;
 import tn.esprit.services.PublicationService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -232,14 +237,8 @@ public class TemplatePublicationController {
 
 public void onEditClicked(MouseEvent mouseEvent) {
     if (!isEditing) {
-        // Mettre en mode édition
         captionpub.setEditable(true);
-
-        // Afficher un bouton ou une icône pour supprimer l'image si nécessaire
-        // Changer l'icône d'édition en une icône de sauvegarde si nécessaire
         edit.setImage(new Image("img/save.png"));
-
-        // Ajouter l'icône de suppression à chaque image
         addDeleteIconToMedia();
 
     } else {
@@ -255,6 +254,17 @@ public void onEditClicked(MouseEvent mouseEvent) {
         removeDeleteIconsFromMedia();
         // Restaurer l'icône d'édition
         edit.setImage(new Image("img/edit.png"));
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle IOException (FXML loading error)
+        }
 
     }
     isEditing = !isEditing;
@@ -268,12 +278,22 @@ public void onEditClicked(MouseEvent mouseEvent) {
             like.setPublication_id(id);
             likeService.add(like);
             imgReaction.setImage(new Image("img/liked.png"));
-
         } else {
             like=likeService.getLikeByIdPublicationAndIdUser(id,1);
             likeService.delete(like);
             // Restaurer l'icône d'édition
             imgReaction.setImage(new Image("img/disliked.png"));
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle IOException (FXML loading error)
         }
 
 
@@ -298,7 +318,7 @@ public void removeDeleteIconsFromMedia() {
                     ImageView imageView = (ImageView) child;
                     String imagePath = getImagePath(imageView);
                     System.out.println(imagePath);
-                    if (imagePath != null && imagePath.equals("file:/C:/Users/Rihab/Desktop/RecrutiJavafx/target/classes/img/deleter.png")) {
+                    if (imagePath != null && imagePath.equals("file:/C:/Users/Rihab/Desktop/git%20java/recruti-javafx/target/classes/img/deleter.png")) {
                         deleteIcon = child;
                         break; // Sortir de la boucle dès qu'une icône est trouvée*
 
@@ -423,6 +443,12 @@ public void removeDeleteIconsFromMedia() {
                     MediaService mediaService = new MediaService();
                     mediaService.delete(String.valueOf(media.getId()));
                 }
+                // Supprimer les likes associés à la publication
+                List<Like> likeList = LikeService.getLikeListByPublicationId(id);
+                for (Like like : likeList) {
+                    LikeService likeService = new LikeService();
+                    likeService.delete(like);
+                }
 
                 // Supprimer la publication
                 PublicationService publicationService = new PublicationService();
@@ -432,6 +458,17 @@ public void removeDeleteIconsFromMedia() {
             } catch (Exception e) {
                 e.printStackTrace();
                 // Gérer l'exception en conséquence
+            }
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+                Parent root = loader.load();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle IOException (FXML loading error)
             }
         }
     }

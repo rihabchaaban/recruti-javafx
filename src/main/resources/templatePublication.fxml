@@ -82,11 +82,7 @@
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
       </TextArea>
-      <HBox fx:id="mediaContainer" prefWidth="683.0">
-         <VBox.margin>
-            <Insets left="20.0" right="20.0" />
-         </VBox.margin>
-      </HBox>
+      <HBox fx:id="mediaContainer" prefWidth="683.0" />
             <StackPane alignment="CENTER_LEFT">
                 <children>
                     <HBox alignment="CENTER_LEFT" spacing="10.0">
@@ -120,7 +116,7 @@
                         <Image url="@img/comment.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="-10.0" />
+                        <Insets left="-15.0" />
                      </HBox.margin>
                   </ImageView>
                         </children>

@@ -12,7 +12,8 @@ import java.io.IOException;
 public class MainFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+       // FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListPublications.fxml"));
          Parent root  = loader.load();
         Scene scene = new Scene(root);
         stage.setTitle("Recruti");

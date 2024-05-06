@@ -2,6 +2,7 @@ package tn.esprit.services;
 
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Like;
+import tn.esprit.models.Media;
 import tn.esprit.util.MaConnexion;
 
 import java.sql.*;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LikeService implements IService<Like> {
-    Connection cnx = MaConnexion.getInstance().getCnx();
+    static Connection cnx = MaConnexion.getInstance().getCnx();
     @Override
     public void add(Like like) {
         String req = "INSERT INTO `like`( `publication_id`,`user_id`) VALUES ( ?, ?)";
@@ -40,6 +41,20 @@ public class LikeService implements IService<Like> {
             pst.setInt(1, like.getId());
             pst.executeUpdate();
             System.out.println("Like deleted successfully");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public static void delete(String id) {
+        String req = "Delete from  `like` where id = ?";
+        try {
+            PreparedStatement pst = cnx.prepareStatement(req);
+            pst.setInt(1, Integer.valueOf(id));
+
+
+            pst.executeUpdate();
+            System.out.println("like deleted successfully");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -105,8 +120,29 @@ public class LikeService implements IService<Like> {
 
         return 0;
     }
+    public static List<Like> getLikeListByPublicationId(int publicationId) {
+        List<Like> likeList = new ArrayList<>();
+        String sql = "SELECT * FROM `Like` WHERE publication_id = ?";
 
+        try (PreparedStatement statement = cnx.prepareStatement(sql)) {
+            statement.setInt(1, publicationId);
 
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Like like = new  Like();
+                    like.setId(resultSet.getInt("id"));
+                    like.setUser_id(resultSet.getInt("user_id"));
+                    like.setPublication_id(resultSet.getInt("publication_id"));
+                    like.setDate_creation_like(resultSet.getTimestamp("date_creation_like"));
+
+                    likeList.add(like);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la récupération des likes par ID de publication.", e);
+        }
+        return likeList;
+    }
 
     @Override
     public Like getOne(int id) {

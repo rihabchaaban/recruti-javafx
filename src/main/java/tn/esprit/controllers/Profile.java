@@ -1,9 +1,13 @@
 package tn.esprit.controllers;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,16 +22,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import tn.esprit.models.Ban;
 import tn.esprit.models.Commentaire;
 import tn.esprit.models.Media;
 import tn.esprit.models.Publication;
-import tn.esprit.services.LikeService;
-import tn.esprit.services.MediaService;
-import tn.esprit.services.CommentaireService;
-import tn.esprit.services.PublicationService;
+import tn.esprit.services.*;
+import javafx.scene.control.Alert;
 
+import java.awt.*;
+import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.logging.Logger;
 
 import java.io.ByteArrayInputStream;
@@ -39,8 +45,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
 import java.util.ResourceBundle;
+import okhttp3.*;
+import okhttp3.Request.Builder;
+
+
+import javax.mail.MessagingException;
 
 import static javafx.scene.layout.HBox.*;
+
 
 
 public class Profile implements Initializable {
@@ -83,50 +95,141 @@ public class Profile implements Initializable {
     }
 
     @FXML
-    void addPost(ActionEvent event) {
+    void addPost(ActionEvent event) throws IOException, MessagingException {
         String contenu = contenuPost.getText();
+        if (contenu.trim().isEmpty()) {
+            showAlert("Empty Post Content", "Post content cannot be empty. Please enter some text.");
+            return;
+        }
 
-        // Create a Publication object
+        PublicationService publicationService = new PublicationService();
+        int publicationId = 0;
         Publication publication = new Publication();
         publication.setUser_id(1);
         publication.setContenu(contenu);
 
-        PublicationService publicationService = new PublicationService();
-        int publicationId = publicationService.addAndGetId(publication);
+        BanService banService = new BanService();
+        Ban ban = banService.getBanByUserId(publication.getUser_id());
+        int user_id=publication.getUser_id();
 
-        // If media files were selected, add them to the database
+           if (isUserBanned(ban)) {
+               showBannedProfileAlert();
+               return;
+           }
+
+         if(! updateOrAddBan(banService, ban, contenu,user_id)){
+
+        publicationId = publicationService.addAndGetId(publication);
+        saveMediaFiles(publicationId);
+        redirectToProfilePage(event);
+        }
+    }
+
+    private boolean isUserBanned(Ban ban) {
+        if(ban != null && ban.getDate_ban()!=null)
+        {  LocalDateTime dateBan = ban.getDate_ban().toLocalDateTime();
+        LocalDateTime currentDate = LocalDateTime.now();
+        LocalDateTime dateBanPlus2Minutes = dateBan.plusMinutes(3);
+
+        return  ban.getDate_ban() != null && ban.getNb_post() >= 3 && currentDate.isBefore(dateBanPlus2Minutes) ;
+    }else{return ban != null && ban.getDate_ban() != null && ban.getNb_post() >= 3;}}
+
+    private boolean isValidContent(String contenu) throws IOException {
+        String filteredContent = filterContent(contenu);
+        System.out.println(filteredContent);
+        return contenu.equals(filteredContent);
+    }
+
+    private boolean updateOrAddBan(BanService banService, Ban ban, String contenu, int user_id) throws IOException, MessagingException {
+      boolean banned=false;
+        if (ban == null || ban.getDate_ban() == null) {
+            if (!isValidContent(contenu)) { updateBanIfNeeded(banService, ban, user_id);}
+        } else {
+          banned=  handleExistingBan(banService, ban, contenu);
+        }
+        return banned;
+    }
+
+    private void updateBanIfNeeded(BanService banService, Ban ban, int user_id) throws IOException, MessagingException {
+        if (ban != null && ban.getNb_post() == 2) {
+            banService.update(ban);
+            banService.updateDateBan(ban);
+            MailingService mailingService = new MailingService();
+            mailingService.sendBannedProfileNotification("rihab.chaabane@esprit.tn");
+        } else if (ban != null) {  banService.update(ban);
+
+        } else {
+            Ban ban1= new Ban();
+            ban1.setUser_id(user_id);
+            ban1.setNb_post(1);
+            banService.add(ban1);
+        }
+    }
+
+    private boolean handleExistingBan(BanService banService, Ban ban, String contenu) throws IOException {
+        LocalDateTime dateBan = ban.getDate_ban().toLocalDateTime();
+        LocalDateTime currentDate = LocalDateTime.now();
+        LocalDateTime dateBanPlus2Minutes = dateBan.plusMinutes(3);
+        boolean banned =true;
+        if (!currentDate.isBefore(dateBanPlus2Minutes)) {
+            banService.delete(ban);
+            banned=false;
+            if (!contenu.equals(filterContent(contenu))) {
+                Ban newBan = new Ban();
+                newBan.setUser_id(ban.getUser_id());
+                newBan.setNb_post(1);
+                banService.add(newBan);
+
+            }
+        } else {
+            showBannedProfileAlert();
+            banned=true;
+        }
+        return banned;
+    }
+
+    private void showBannedProfileAlert() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Profile banned");
+        alert.setHeaderText(null);
+        alert.setContentText("Your profile has been banned for 3 days due to multiple violations of our community guidelines. This action was taken because you have posted content containing inappropriate language multiple times. During this ban period, you are not allowed to post any content.");
+        alert.showAndWait();
+    }
+
+    private void saveMediaFiles(int publicationId) {
         if (!selectedMediaFiles.isEmpty()) {
-            // Create a MediaService instance
             MediaService mediaService = new MediaService();
-
-            // Iterate over selected media files
             for (File file : selectedMediaFiles) {
                 try {
-                    // Read the file data
                     byte[] fileData = Files.readAllBytes(file.toPath());
-
-
-                    // Determine media type
                     String mediaType = determineMediaType(file);
-
-                    // Create a Media object and set its data, path, and type
                     Media media = new Media(fileData, file.getAbsolutePath(), mediaType, publicationId);
-
-
-                    // Add the media to the database
                     mediaService.add(media);
                 } catch (IOException e) {
                     e.printStackTrace();
-                    // Handle IOException (file reading error)
                 }
             }
-
             System.out.println(selectedMediaFiles.size() + " media files added to the database");
         }
-
-        System.out.println("Publication added successfully");
-
     }
+
+    private void redirectToProfilePage(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 
     @FXML
     void addMedia(ActionEvent event) {
@@ -137,29 +240,29 @@ public class Profile implements Initializable {
 
         // If files are selected, add them to the list
         if (selectedFiles != null) {
-            selectedMediaFiles.addAll(selectedFiles);
-            System.out.println(selectedMediaFiles.size() + " media files selected");
+            for (File file : selectedFiles) {
+                String mediaType = determineMediaType(file);
+                if (mediaType.equals("photo") || mediaType.equals("video")) {
+                    selectedMediaFiles.add(file);
+                } else {
+                    // Display an error message indicating that only image or video files are allowed
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Invalid Media Type");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Only image (jpg, jpeg, png) or video (mp4, avi, mov) files are allowed.");
+                    alert.showAndWait();
+                }
+            }
         }
 
     }
 
-    public void onReactionImgPressed(MouseEvent mouseEvent) {
-    }
 
-    public void onLikeContainerPressed(MouseEvent mouseEvent) {
-    }
-
-    public void onLikeContainerMouseReleased(MouseEvent mouseEvent) {
-    }
 public String GetformattedDate(LocalDateTime dateCreation) {
     LocalDateTime now = LocalDateTime.now();
-    // Calculate the difference between the two dates
     Duration duration = Duration.between(dateCreation, now);
-
-    // Get the difference in hours
     long hours = duration.toHours();
 
-    // Format the string based on the number of hours
     String formattedDate;
     if (hours < 1) {
         long minutes = duration.toMinutes();
@@ -171,6 +274,35 @@ public String GetformattedDate(LocalDateTime dateCreation) {
     }
 return formattedDate;
 }
+public static String filterContent(String content) throws IOException {
+        OkHttpClient client = new OkHttpClient();
+
+        String inputText = content;
+
+        MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+        String requestBody = String.format("api_key=b96a1ba195ec2ef8f24ab29a30ff32eb&method=webpurify.live.replace&text=%s&replacesymbol=*&lang=en&format=json", inputText);
+        RequestBody body = RequestBody.create(mediaType, requestBody);
+
+        // Construction de la requête
+        Request request = new Request.Builder()
+                .url("https://api1.webpurify.com/services/rest/")
+                .post(body)
+                .addHeader("content-type", "application/x-www-form-urlencoded")
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+        String responseBody = response.body().string();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        JsonNode jsonNode = objectMapper.readTree(responseBody);
+
+        String extractedText = jsonNode.get("rsp").get("text").asText();
+
+
+        return extractedText;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -180,14 +312,17 @@ return formattedDate;
 
         List<Publication> publications = publicationService.getPublicationsByUserId(1);
 
-        for (Publication publication : publications) {
+        for (int i = publications.size() - 1; i >= 0; i--) {
+            Publication publication = publications.get(i);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/templatePublication.fxml"));
             try {
                 Node postNode = loader.load();
                 TemplatePublicationController controller = loader.getController();
+                // Send the content to Bad Word Filter API
+                String filteredContent = filterContent(publication.getContenu());
+                controller.getCaptionpub().setText(filteredContent);
                 LocalDateTime dateCreationpub = publication.getDate_creationpub().toLocalDateTime();
                 controller.getDate().setText(GetformattedDate(dateCreationpub));
-                controller.getCaptionpub().setText(publication.getContenu());
                 controller.setId(publication.getId());
 
                 //LIKE
@@ -201,9 +336,6 @@ return formattedDate;
 
 
 
-
-
-
                 //MEDIAAAAA
                 List<Media> medias = MediaService.getMediaListByPublicationId(publication.getId());
                 controller.getMediaContainer().setAlignment(Pos.CENTER);
@@ -212,15 +344,13 @@ return formattedDate;
 
                     if ("photo".equals(media.getType())) {
                         LOGGER.info("Traitement du média : " + media.getType());
-                        double desiredWidth = 300; // Remplacez par la largeur souhaitée
-                        double desiredHeight = 220; // Remplacez par la hauteur souhaitée
-
+                        double desiredWidth = 300;
+                        double desiredHeight = 220;
                         ImageView imageView = new ImageView();
 //                    ByteArrayInputStream bis = new ByteArrayInputStream(media.getData());
 //                    Image image = new Image(bis);
-                        String imagePath = media.getChemin(); // Chemin de l'image
+                        String imagePath = media.getChemin();
 
-                        // Créer l'objet Image à partir du chemin de l'image
                         Image image = new Image(new File(imagePath).toURI().toString());
 
                         imageView.setImage(image);

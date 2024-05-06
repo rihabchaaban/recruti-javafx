@@ -1,14 +1,22 @@
 package tn.esprit.controllers;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import tn.esprit.models.Commentaire;
 import tn.esprit.models.Publication;
 import tn.esprit.services.CommentaireService;
 import tn.esprit.services.PublicationService;
+
+import java.io.IOException;
 
 public class newCommentController {
 
@@ -39,6 +47,7 @@ public class newCommentController {
     @FXML
     void onAddClicked(MouseEvent event) {
         String contenu = comment.getText();
+        if (!contenu.trim().isEmpty()) {
         Commentaire commentaire = new Commentaire();
         commentaire.setUser_id(1);
         commentaire.setPublication_id(id);
@@ -47,6 +56,26 @@ public class newCommentController {
         commentaireService.add(commentaire);
         System.out.println("Commentaire added successfully");
 
+        }
+        else {
+            // Display an alert box indicating that the post content cannot be empty
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Empty Post Content");
+            alert.setHeaderText(null);
+            alert.setContentText("Comment content cannot be empty. Please enter some text.");
+            alert.showAndWait();
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle IOException (FXML loading error)
+        }
     }
 
     public ImageView getAjoutComment() {
