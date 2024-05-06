@@ -15,7 +15,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import services.BiblioService;
@@ -35,14 +34,10 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import javafx.scene.control.ComboBox;
-
-public class AddRessourceController implements Initializable{
+public class AddRessourceFrontController implements Initializable {
     @FXML
-    private AnchorPane addRessourcePane;
+    private AnchorPane addRessourceFrontPane;
 
     @FXML
     private Button btnAddRessource;
@@ -154,7 +149,7 @@ public class AddRessourceController implements Initializable{
         LocalDate datePublicationValue = datePickerPublication.getValue();
         String description = txtDescriptionRessource.getText().trim();
 
-         Biblio selectedBiblio = txtBiblio.getValue();
+        Biblio selectedBiblio = txtBiblio.getValue();
         // Vérifiez si tous les champs obligatoires sont remplis
         boolean fieldsEmpty = titre.isEmpty() || type == null || categorie == null || datePublicationValue == null || imageName == null || description.isEmpty();
 
@@ -169,7 +164,6 @@ public class AddRessourceController implements Initializable{
                 lblBiblioMessage.setText(selectedBiblio == null ? "Please select a library" : ""); // Ajout du contrôle pour la bibliothèque
                 return; // Sortir de la méthode si des champs sont vides
             }
-
 // Récupérer l'identifiant de la bibliothèque sélectionnée
             Biblio selectedBiblios = txtBiblio.getValue();
             biblio_id = selectedBiblio.getId(); // Supposons que getId() renvoie l'identifiant de la bibliothèque
@@ -235,15 +229,18 @@ public class AddRessourceController implements Initializable{
         imageViewRessource.setImage(null);
     }
 
-    // Méthode pour retourner à la page gestionRessource.fxml
+
     @FXML
     void goToPages(ActionEvent event) throws IOException {
         if(event.getSource() == btnRetour){
-            Parent fxml = FXMLLoader.load(getClass().getResource("gestionRessource.fxml"));
-            addRessourcePane.getChildren().removeAll();
-            addRessourcePane.getChildren().setAll(fxml);
+            Parent fxml = FXMLLoader.load(getClass().getResource("listBiblioFrontRecruteur.fxml"));
+            Scene scene = new Scene(fxml);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
         }
     }
+
     @FXML
     void ajouterType(ActionEvent event) {
         String nouveauDomaine = txtNewType.getText().trim();
@@ -260,7 +257,13 @@ public class AddRessourceController implements Initializable{
             txtNewCategorie.clear(); // Efface le champ de saisie après l'ajout
         }
     }
+
+
+
+    private void refrech() {
+    }
 }
+
 
 
 
