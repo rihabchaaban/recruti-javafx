@@ -7,11 +7,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import services.BiblioService;
 
@@ -22,7 +22,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.sql.SQLException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -30,19 +29,20 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class EditBiblioController implements Initializable {
 
     @FXML
-    private Button btnClearBiblio;
+    private AnchorPane updateBiblioPane;
 
     @FXML
     private Button btnUpdateBiblio;
 
     @FXML
-    private DatePicker txtDateBiblio;
+    private Button btnClearBiblio;
+
+    @FXML
+    private TextField txtNewDomain;
 
     @FXML
     private TextField txtNomBiblio;
@@ -51,63 +51,51 @@ public class EditBiblioController implements Initializable {
     private ComboBox<String> txtDomaineBiblio;
 
     @FXML
+    private DatePicker txtDateBiblio;
+
+    @FXML
     private ImageView imageViewBiblio;
 
     @FXML
-    private AnchorPane updateBiblioPane;
+    private Label lblNomMessage;
 
-    Biblio biblio;
+    @FXML
+    private Label lblDomaineMessage;
+
+    @FXML
+    private Label lblDateMessage;
+
+    @FXML
+    private Label lblImageMessage;
+
+    @FXML
+    private Button btnRetour;
 
     private File selectedImageFile;
     private String imageName = null;
 
-    @Override
+    private BiblioService biblioService = new BiblioService(); // Créer une instance du service
+
+    private Biblio biblioToEdit; // Stocker la bibliothèque à éditer
+
+    // Setter pour définir la bibliothèque à éditer
+    public void setBiblioToEdit(Biblio biblioToEdit) {
+        this.biblioToEdit = biblioToEdit;
+    }
+Biblio biblio;
+    @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> options = FXCollections.observableArrayList(
                 "Law Library", "Art Library", "Science Library", "History Library", "Music Library", "Design Library", "Medical Library", "Health Library", "Engineering Library");
         txtDomaineBiblio.setItems(options);
 
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("itemBiblio.fxml"));
-        try {
-            AnchorPane anchorPane = fxmlLoader.load();
-            VBox hBox = (VBox) anchorPane.getChildren().get(0);
-            itemBiblioController item = fxmlLoader.getController();
-
-            // Ajout d'une vérification pour s'assurer que item.getId() renvoie une valeur valide
-            Logger.getLogger(EditBiblioController.class.getName()).log(Level.SEVERE, "item or item.getId() is null");
-        } catch (IOException ex) {
-            Logger.getLogger(itemBiblioController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-
-    @FXML
-    void clearFieldsBiblio() {
-        txtNomBiblio.clear();
-        txtDomaineBiblio.setValue(null);
-        txtDateBiblio.setValue(null);
-        imageViewBiblio.setImage(null);
-    }
-
-    @FXML
-    void updateBiblio(ActionEvent event) {
-        if (txtNomBiblio.getText().isEmpty() || txtDomaineBiblio.getValue() == null || txtDateBiblio.getValue() == null || imageName == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Information manquante");
-            alert.setHeaderText(null);
-            alert.setContentText("Vous devez remplir tous les détails concernant votre bibliothèque.");
-            alert.showAndWait();
-        } else {
-            modifierBiblio();
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Modifié avec succès");
-            alert.setHeaderText(null);
-            alert.setContentText("Votre bibliothèque a été modifiée avec succès.");
-            alert.showAndWait();
-
-            clearFieldsBiblio();
-        }
+        if (biblioToEdit != null) {
+            // Afficher les détails de la bibliothèque à éditer
+            txtNomBiblio.setText(biblioToEdit.getNom_b());
+            txtDomaineBiblio.setValue(biblioToEdit.getDomaine_b());
+            // txtDateBiblio.setValue(biblioToEdit.getDate_creation_b());
+            // imageViewBiblio.setImage(biblioToEdit.getImage_b());
+            biblio = biblioToEdit;}
     }
 
     @FXML
@@ -127,32 +115,70 @@ public class EditBiblioController implements Initializable {
 
             Path destination = Paths.get(System.getProperty("user.dir"), "src", "main", "java", "uploads", imageName);
             Files.copy(selectedImageFile.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
-
         }
     }
 
-    private void modifierBiblio() {
+    @FXML
+    void updateBiblio(ActionEvent event) {
+        modifBiblio();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Modifié avec succès");
+        alert.setHeaderText(null);
+        alert.setContentText("Votre Biblio a été modifié avec succès.");
+        Optional<ButtonType> option = alert.showAndWait();
+    }
+
+    void modifBiblio() {
+        // From Formulaire
         String nom = txtNomBiblio.getText();
         String domaine = txtDomaineBiblio.getValue();
-        LocalDate localDate = txtDateBiblio.getValue();
         Date date = null;
-        if (localDate != null) {
-            Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-            date = Date.from(instant);
+        try {
+            LocalDate localDate = txtDateBiblio.getValue();
+            if (localDate != null) {
+                Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+                date = Date.from(instant);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        Biblio updatedBiblio = new Biblio();
-        updatedBiblio.setId(biblio.getId());
-        updatedBiblio.setNom_b(nom);
-        updatedBiblio.setDomaine_b(domaine);
-        updatedBiblio.setDate_creation_b(date);
-        if (imageName != null) {
-            updatedBiblio.setImage_b(imageName);
-        } else {
-            updatedBiblio.setImage_b(biblio.getImage_b());
-        }
+        String image = imageName; // Utilisez le nom de l'image au lieu de l'image elle-même
 
+        Biblio b = new Biblio(
+                biblioToEdit.getId(), nom, domaine, date, image);
         BiblioService bs = new BiblioService();
-        bs.modifier(updatedBiblio);
+        bs.modifier(b);
+    }
+
+
+
+
+
+    @FXML
+    void clearFieldsBiblio() {
+        txtNomBiblio.clear();
+        txtDomaineBiblio.setValue(null);
+        txtDateBiblio.setValue(null);
+        imageViewBiblio.setImage(null);
+    }
+
+    // Méthode pour retourner à la page gestionBiblio.fxml
+    @FXML
+    void goToPages(ActionEvent event) throws IOException {
+        if (event.getSource() == btnRetour) {
+            Parent fxml = FXMLLoader.load(getClass().getResource("gestionBiblio.fxml"));
+            updateBiblioPane.getChildren().removeAll();
+            updateBiblioPane.getChildren().setAll(fxml);
+        }
+    }
+
+    @FXML
+    void ajouterDomaine(ActionEvent event) {
+        String nouveauDomaine = txtNewDomain.getText().trim();
+        if (!nouveauDomaine.isEmpty()) {
+            txtDomaineBiblio.getItems().add(nouveauDomaine);
+            txtNewDomain.clear(); // Efface le champ de saisie après l'ajout
+        }
     }
 }

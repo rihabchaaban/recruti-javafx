@@ -60,7 +60,7 @@ public class itemBiblioController implements Initializable{
         labelNameBiblio.setText(bib.getNom_b());
         labelCategorieBiblio.setText(bib.getDomaine_b());
         labelDateBiblio.setText(String.valueOf(bib.getDate_creation_b()));
-        labelImageBiblio.setImage(new Image("file:///C:/Users/guemr/Desktop/gestionOffre/src/main/java/uploads/"+bib.getImage_b()));
+        labelImageBiblio.setImage(new Image("file:///C:/Users/Lenovo/Desktop/gestionLibraries/src/main/java/uploads/"+bib.getImage_b()));
 
         this.id = bib.getId();
     }
@@ -89,7 +89,7 @@ public class itemBiblioController implements Initializable{
         BiblioService biblioService = new BiblioService();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
-        alert.setHeaderText("Voulez-vous vraiment supprimer cette bibliothèque ?");
+        alert.setHeaderText("Do you really want to delete this library?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             // Récupérer l'ID de biblio sélectionnée

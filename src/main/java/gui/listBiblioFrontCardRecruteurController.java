@@ -66,7 +66,7 @@ public class listBiblioFrontCardRecruteurController implements Initializable {
         // Afficher une boîte de dialogue de confirmation
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
-        alert.setHeaderText("Voulez-vous vraiment supprimer ce Offer ?");
+        alert.setHeaderText("Do you really want to delete this library?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             // Récupérer l'ID de biblio sélectionnée

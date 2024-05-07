@@ -59,7 +59,7 @@ public class listRessourceFrontCardController implements Initializable {
 
         labelTitreRess.setText(ress.getTitre_b());
         labelFieldRess.setText(String.valueOf(ress.getCategorie_resso_b()));
-        imageViewRessource.setImage(new Image("file:///C:/Users/guemr/Desktop/gestionOffre/src/main/java/uploads/"+ress.getImage_b_ressource()));
+        imageViewRessource.setImage(new Image("file:///C:/Users/Lenovo/Desktop/gestionLibraries/src/main/java/uploads/"+ress.getImage_b_ressource()));
         labelBiblioRess.setText(String.valueOf(bs.getById(ress.getBiblio_id()).getNom_b()));
         this.id=ress.getId();
     }
@@ -90,10 +90,9 @@ public class listRessourceFrontCardController implements Initializable {
         // Afficher une boîte de dialogue de confirmation
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
-        alert.setHeaderText("Voulez-vous vraiment supprimer cette Condidature ?");
+        alert.setHeaderText("Do you really want to delete this Resource?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            // Récupérer l'ID de la condidature sélectionnée
             int id = this.ress.getId();
 
             // Supprimer la condidature de la base de données

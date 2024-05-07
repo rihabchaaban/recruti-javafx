@@ -25,7 +25,7 @@
         <HBox prefHeight="63.0" prefWidth="723.0" style="-fx-background-color: #720000;">
             <children>
                 <Pane prefHeight="63.0" prefWidth="267.0" />
-                <Label text="Edit Library" textFill="WHITE">
+                <Label text="Modifier Offer" textFill="WHITE">
                     <font>
                         <Font name="Cooper Black" size="31.0" />
                     </font>
@@ -37,50 +37,67 @@
         </HBox>
         <VBox layoutX="89.0" layoutY="87.0" prefHeight="444.0" prefWidth="526.0">
             <children>
-                <HBox prefHeight="30.0" prefWidth="566.0">
+                <HBox prefHeight="30.0" prefWidth="526.0">
                     <children>
                         <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Name :" />
-                        <Pane prefHeight="21.0" prefWidth="102.0" />
-                        <TextField fx:id="txtNomBiblio" prefHeight="26.0" prefWidth="198.0" styleClass="textfield" stylesheets="@style.css" />
+                        <TextField fx:id="txtNomBiblio" prefHeight="26.0" prefWidth="240.0" promptText="Name Library" styleClass="textfield" stylesheets="@style.css" />
                     </children>
                 </HBox>
-
+                <Label fx:id="lblNomMessage" prefHeight="29.0" prefWidth="566.0" textFill="RED" />
                 <Pane prefHeight="19.0" prefWidth="566.0" />
-                <HBox prefHeight="30.0" prefWidth="566.0">
+
+                <HBox prefHeight="30.0" prefWidth="526.0" styleClass="hbox">
                     <children>
-                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Field :" />
-                        <Pane prefHeight="21.0" prefWidth="102.0" />
-                        <ComboBox fx:id="txtDomaineBiblio" prefHeight="26.0" prefWidth="198.0" promptText="Choose Field" styleClass="comboBox" stylesheets="@style.css" />
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Domain :" />
+                        <ComboBox fx:id="txtDomaineBiblio" prefHeight="26.0" prefWidth="240.0" promptText="Choose Domain" styleClass="comboBox" stylesheets="@style.css" />
                     </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="526.0" styleClass="hbox">
+                    <children>
+                        <TextField fx:id="txtNewDomain" prefHeight="26.0" prefWidth="240.0" promptText="Add New Domain" styleClass="textfield" stylesheets="@style.css"/>
+                        <Button text="Add Domain" onAction="#ajouterDomaine"  prefHeight="43.0" prefWidth="133.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css" />
+                    </children>
+                    <padding>
+                        <Insets left="126.0" />
+                    </padding>
                 </HBox>
 
+                <Label fx:id="lblDomaineMessage" prefHeight="29.0" prefWidth="566.0" textFill="RED" />
                 <Pane prefHeight="19.0" prefWidth="566.0" />
-                <HBox prefHeight="30.0" prefWidth="566.0" styleClass="label-ajout" stylesheets="@style.css">
+                <HBox prefHeight="30.0" prefWidth="526.0">
                     <children>
-                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" text="Date :" />
-                        <Pane prefHeight="21.0" prefWidth="102.0" />
-                        <DatePicker fx:id="txtDateBiblio" prefHeight="26.0" prefWidth="198.0" styleClass="comboBox" stylesheets="@style.css" />
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Date :" />
+                        <DatePicker fx:id="txtDateBiblio" prefHeight="26.0" prefWidth="240.0" promptText="Creation Date" styleClass="textfield" stylesheets="@style.css"/>
                     </children>
                 </HBox>
-
+                <Label fx:id="lblDateMessage" prefHeight="29.0" prefWidth="566.0" textFill="RED" />
+                <Label fx:id="lblDateMessage2" prefHeight="29.0" prefWidth="566.0" textFill="RED" />
                 <Pane prefHeight="19.0" prefWidth="566.0" />
-                <HBox prefHeight="30.0" prefWidth="566.0">
+                <HBox prefHeight="30.0" prefWidth="526.0">
                     <children>
-                        <Label prefHeight="22.0" prefWidth="180.0" styleClass="label-ajout" stylesheets="@style.css" text="Image :" />
-                        <Pane prefHeight="21.0" prefWidth="102.0" />
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Image :" />
                         <Button text="Choose An Image" onAction="#ajouterImage"  mnemonicParsing="false" prefHeight="30.0" prefWidth="240.0" styleClass="btn" stylesheets="@style.css" />
-                        <Pane prefHeight="30.0" prefWidth="13.0" />
-                        <ImageView fx:id="imageViewBiblio" fitHeight="150.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </HBox>
-
-                <Pane prefHeight="52.0" prefWidth="526.0" />
-                <HBox prefHeight="30.0" prefWidth="566.0">
+                <Label fx:id="lblImageMessage" prefHeight="29.0" prefWidth="566.0" textFill="RED" />
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="526.0">
                     <children>
-                        <Pane prefHeight="30.0" prefWidth="138.0" />
-                        <Button fx:id="btnClearBiblio" prefHeight="43.0" prefWidth="133.0" mnemonicParsing="false" onAction="#clearFieldsBiblio" snapToPixel="false" styleClass="btn" stylesheets="@style.css" text="Clear" />
-                        <Pane prefHeight="30.0" prefWidth="112.0" />
-                        <Button fx:id="btnUpdateBiblio" prefHeight="43.0" prefWidth="133.0" mnemonicParsing="false" onAction="#updateBiblio" styleClass="btn" stylesheets="@style.css" text="Edit" />
+                        <ImageView fx:id="imageViewBiblio" fitHeight="150.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true"  />
+                    </children>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="526.0">
+                    <children>
+                        <Button fx:id="btnRetour" onAction="#goToPages" prefHeight="43.0" prefWidth="133.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css" text="Back" />
+                        <Pane prefHeight="56.0" prefWidth="66.0" />
+                        <Button fx:id="btnUpdateBiblio"  prefHeight="43.0" prefWidth="133.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css" mnemonicParsing="false" onAction="#updateBiblio"  text="Edit Library"  />
+                        <Pane prefHeight="56.0" prefWidth="66.0" />
+                        <Button fx:id="btnClearBiblio"  onAction="#clearFieldsBiblio" prefHeight="43.0" prefWidth="133.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css"  mnemonicParsing="false" text="Clear" />
                     </children>
                 </HBox>
             </children>
