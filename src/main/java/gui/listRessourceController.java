@@ -1,5 +1,6 @@
 package gui;
 
+import com.itextpdf.text.*;
 import entities.Ressource;
 import gui.itemRessourceController;
 import javafx.collections.FXCollections;
@@ -9,14 +10,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.input.MouseEvent;
 import services.RessourceService;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,6 +29,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
+
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
 public class listRessourceController implements Initializable {
 
@@ -171,6 +184,77 @@ public class listRessourceController implements Initializable {
     private void sortByDateDescending() {
         ressourcesData.sort(Comparator.comparing(Ressource::getDate_publica_b).reversed());
         updatePagination(ressourcesData);
+    }
+    @FXML
+    void genererPDF(MouseEvent event) {
+        // Afficher la boîte de dialogue de sélection de fichier
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Enregistrer le fichier PDF");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichiers PDF", "*.pdf"));
+        File selectedFile = fileChooser.showSaveDialog(getWindow(event));
+
+        if (selectedFile != null) {
+            // Générer le fichier PDF avec l'emplacement de sauvegarde sélectionné
+            try {
+                // Créer le document PDF
+                Document document = new Document();
+                PdfWriter.getInstance(document, new FileOutputStream(selectedFile));
+                document.open();
+
+                // Ajouter le contenu au document
+                addContentToPDF(document);
+
+                document.close();
+
+                System.out.println("Le fichier PDF a été généré avec succès.");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Méthode pour ajouter le contenu au document PDF
+    private void addContentToPDF(Document document) throws DocumentException, SQLException {
+        RessourceService rs = new RessourceService();
+        List<Ressource> ressources = rs.afficher();
+
+        // Créer une police personnalisée pour les titres
+        Font fontTitle = FontFactory.getFont(FontFactory.TIMES_BOLD, 18);
+        BaseColor titleColor = new BaseColor(114, 0, 0); //
+        fontTitle.setColor(titleColor);
+        // Créer une police personnalisée pour les données
+        Font fontData = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12);
+
+        // Créer un paragraphe pour le titre
+        Paragraph title = new Paragraph("Resources Listing ", fontTitle);
+        title.setAlignment(Paragraph.ALIGN_CENTER);
+        title.setSpacingAfter(20);
+        document.add(title);
+
+        // Créer une table pour afficher les données
+        PdfPTable table = new PdfPTable(4);
+        table.setWidthPercentage(100);
+        table.addCell(new PdfPCell(new Paragraph("Title", fontTitle)));
+        table.addCell(new PdfPCell(new Paragraph("Type", fontTitle)));
+        table.addCell(new PdfPCell(new Paragraph("Field", fontTitle)));
+        table.addCell(new PdfPCell(new Paragraph("Publication Date", fontTitle)));
+
+        // Ajouter les données des ressources à la table
+        for (Ressource ressource : ressources) {
+            table.addCell(new PdfPCell(new Paragraph(ressource.getTitre_b(), fontData)));
+            table.addCell(new PdfPCell(new Paragraph(ressource.getType_b(), fontData)));
+            table.addCell(new PdfPCell(new Paragraph(ressource.getCategorie_resso_b(), fontData)));
+            table.addCell(new PdfPCell(new Paragraph(String.valueOf(ressource.getDate_publica_b()), fontData)));
+        }
+
+        document.add(table);
+        System.out.println(" PDF generated Successfully.");
+
+    }
+
+    // Méthode utilitaire pour obtenir la fenêtre parente
+    private Window getWindow(MouseEvent event) {
+        return ((Node) event.getSource()).getScene().getWindow();
     }
 
 }

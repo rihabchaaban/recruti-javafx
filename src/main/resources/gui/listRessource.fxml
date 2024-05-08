@@ -60,6 +60,7 @@
                 <Font name="Times New Roman" size="30.0" />
             </font>
         </Label>
+        <Button layoutX="790.0" layoutY="138.0" mnemonicParsing="false" onMouseClicked="#genererPDF" prefHeight="36.0" prefWidth="64.0" styleClass="btn" stylesheets="@style.css" text="PDF" />
 
         <Button layoutX="728.0" layoutY="80.0" onAction="#handleSearch" prefHeight="36.0" prefWidth="124.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css" text="Search" />
     <TextField fx:id="searchFieldType" layoutX="251.0" layoutY="81.0" prefHeight="36.0" prefWidth="225.0" promptText="Search Type" styleClass="textfield" stylesheets="@style.css" />
