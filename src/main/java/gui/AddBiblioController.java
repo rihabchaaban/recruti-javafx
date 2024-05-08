@@ -83,10 +83,12 @@ public class AddBiblioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> options = FXCollections.observableArrayList(
-                "Law Library", "Art Library", "Science Library", "History Library"," Music Library","Design Library","Medical Library"," Health Library" ,"Engineering Library");
+                "Business And Management", "Fine Arts", "Medical Science", "Engineering",
+                "Natural Science", "Music And Performing Arts", "History", "Design");
         txtDomaineBiblio.setItems(options);
         lblDateMessage2.setVisible(false); // Cacher le message d'erreur de date invalide
     }
+
 
     @FXML
     void ajouterImage(ActionEvent event) throws IOException {

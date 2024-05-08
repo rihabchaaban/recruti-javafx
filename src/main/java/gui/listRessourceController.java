@@ -20,6 +20,7 @@ import services.RessourceService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -121,6 +122,7 @@ public class listRessourceController implements Initializable {
         }
     }
 
+
     private void resetPagination() {
         pag.setPageCount((int) Math.ceil(ressourcesData.size() / 3.0));
         updatePagination(ressourcesData);
@@ -152,4 +154,23 @@ public class listRessourceController implements Initializable {
             return hbox;
         });
     }
+
+    @FXML
+    private void sortByTitle() {
+        ressourcesData.sort(Comparator.comparing(Ressource::getTitre_b));
+        updatePagination(ressourcesData);
+    }
+
+    @FXML
+    private void sortByDate() {
+        ressourcesData.sort(Comparator.comparing(Ressource::getDate_publica_b));
+        updatePagination(ressourcesData);
+    }
+
+    @FXML
+    private void sortByDateDescending() {
+        ressourcesData.sort(Comparator.comparing(Ressource::getDate_publica_b).reversed());
+        updatePagination(ressourcesData);
+    }
+
 }

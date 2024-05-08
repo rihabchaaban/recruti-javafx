@@ -1,5 +1,6 @@
 package services;
 
+import entities.Biblio;
 import entities.Ressource;
 import utils.MyDB;
 
@@ -101,4 +102,25 @@ public class RessourceService {
         }
         return ressource;
     }
+
+    public List<Ressource> getByBiblio(Biblio biblio) {
+        List<Ressource> resources = new ArrayList<>();
+        String sql = "SELECT * FROM ressource WHERE biblio_id=?";
+        try {
+            PreparedStatement pst = conx.prepareStatement(sql);
+            pst.setInt(1, biblio.getId());
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Ressource ressource = new Ressource(rs.getInt("id"), rs.getInt("biblio_id"),
+                        rs.getString("titre_b"), rs.getString("type_b"),
+                        rs.getDate("date_publica_b"), rs.getString("categorie_resso_b"),
+                        rs.getString("description_b"), rs.getString("image_b_ressource"));
+                resources.add(ressource);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resources;
+    }
+
 }

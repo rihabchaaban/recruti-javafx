@@ -47,8 +47,8 @@
 
                 <HBox prefHeight="30.0" prefWidth="526.0" styleClass="hbox">
                     <children>
-                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Domain :" />
-                        <ComboBox fx:id="txtDomaineBiblio" prefHeight="26.0" prefWidth="240.0" promptText="Choose Domain" styleClass="comboBox" stylesheets="@style.css" />
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Field :" />
+                        <ComboBox fx:id="txtDomaineBiblio" prefHeight="26.0" prefWidth="240.0" promptText="Choose Field" styleClass="comboBox" stylesheets="@style.css" />
                     </children>
                     <padding>
                         <Insets left="10.0" />
@@ -57,7 +57,7 @@
                 <Pane prefHeight="19.0" prefWidth="566.0" />
                 <HBox prefHeight="30.0" prefWidth="526.0" styleClass="hbox">
                     <children>
-                        <TextField fx:id="txtNewDomain" prefHeight="26.0" prefWidth="240.0" promptText="Add New Domain" styleClass="textfield" stylesheets="@style.css"/>
+                        <TextField fx:id="txtNewDomain" prefHeight="26.0" prefWidth="240.0" promptText="Add New Field" styleClass="textfield" stylesheets="@style.css"/>
                         <Button text="Add Domain" onAction="#ajouterDomaine"  prefHeight="43.0" prefWidth="133.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css" />
                     </children>
                     <padding>

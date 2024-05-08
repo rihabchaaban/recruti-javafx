@@ -19,6 +19,9 @@ public class gestionBiblioController implements Initializable {
     private Button btnViewBiblio;
 
     @FXML
+    private Button btnStatBiblio;
+
+    @FXML
     private AnchorPane gestionBiblioPane;
 
 
@@ -29,14 +32,20 @@ public class gestionBiblioController implements Initializable {
 
     @FXML
     void goToPages(ActionEvent event) throws IOException {
-        if(event.getSource() == btnAddBiblio){
+        if (event.getSource() == btnAddBiblio) {
             Parent fxml = FXMLLoader.load(getClass().getResource("addBiblio.fxml"));
             gestionBiblioPane.getChildren().removeAll();
             gestionBiblioPane.getChildren().setAll(fxml);
-        } else if(event.getSource() == btnViewBiblio){
+        } else if (event.getSource() == btnViewBiblio) {
             Parent fxml = FXMLLoader.load(getClass().getResource("listBiblio.fxml"));
+            gestionBiblioPane.getChildren().removeAll();
+            gestionBiblioPane.getChildren().setAll(fxml);
+        } else if (event.getSource() == btnStatBiblio) {
+            // Load statistics page
+            Parent fxml = FXMLLoader.load(getClass().getResource("statistics.fxml"));
             gestionBiblioPane.getChildren().removeAll();
             gestionBiblioPane.getChildren().setAll(fxml);
         }
     }
+
 }

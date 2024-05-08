@@ -8,18 +8,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import services.BiblioService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -29,19 +29,13 @@ import java.util.stream.Collectors;
 public class listBiblioController implements Initializable {
 
     @FXML
-    private GridPane grid;
-
-    @FXML
     private HBox hbox;
-
-    @FXML
-    private AnchorPane listBiblioPane;
 
     @FXML
     private Pagination pag;
 
     @FXML
-    private HBox vbox;
+    private VBox vbox;
 
     @FXML
     private Label totalLibrariesLabel;
@@ -72,30 +66,11 @@ public class listBiblioController implements Initializable {
             // Afficher le nombre total de bibliothèques dans l'étiquette
             totalLibrariesLabel.setText("Total Libraries: " + totalBiblios);
 
-            pag.setPageCount((int) Math.ceil(bibliosData.size() / 3.0)); // Nombre total de pages nécessaire pour afficher toutes les cartes
-            pag.setPageFactory(pageIndex -> {
-                HBox hbox = new HBox();
-                hbox.setSpacing(10);
-                hbox.setAlignment(Pos.CENTER);
-                int itemsPerPage = 3; // Nombre des sujets à afficher par page
-                int page = pageIndex * itemsPerPage;
-                for (int i = page; i < Math.min(page + itemsPerPage, bibliosData.size()); i++) {
-                    try {
-                        FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("itemBiblio.fxml"));
-                        AnchorPane anchorPane = fxmlLoader.load();
-                        anchorPane.getStyleClass().add("ct");
-                        itemBiblioController itemController = fxmlLoader.getController();
-                        itemController.setData(bibliosData.get(i));
-                        hbox.getChildren().add(anchorPane);
-                        HBox.setMargin(anchorPane, new Insets(10)); // Marges entre les cartes
-                    } catch (IOException ex) {
-                        Logger.getLogger(itemBiblioController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+            // Charger les données des bibliothèques
+            loadBibliosData();
 
-                }
-                return hbox;
-            });
+            // Afficher les données initiales
+            updatePagination(bibliosData);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -114,6 +89,34 @@ public class listBiblioController implements Initializable {
             pag.setPageCount((int) Math.ceil(searchResult.size() / 3.0));
             // Mise à jour de l'affichage avec les résultats de la recherche
             updatePagination(searchResult);
+        }
+    }
+
+    @FXML
+    private void sortByDate() {
+        bibliosData.sort(Comparator.comparing(Biblio::getDate_creation_b));
+        updatePagination(bibliosData);
+    }
+
+    @FXML
+    private void sortByDateDescending() {
+        bibliosData.sort(Comparator.comparing(Biblio::getDate_creation_b).reversed());
+        updatePagination(bibliosData);
+    }
+
+    @FXML
+    private void sortByName() {
+        bibliosData.sort(Comparator.comparing(Biblio::getNom_b));
+        updatePagination(bibliosData);
+    }
+
+    private void loadBibliosData() {
+        try {
+            BiblioService bs = new BiblioService();
+            List<Biblio> biblios = bs.afficher();
+            bibliosData.addAll(biblios);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -142,7 +145,6 @@ public class listBiblioController implements Initializable {
                 } catch (IOException ex) {
                     Logger.getLogger(itemBiblioController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
             }
             return hbox;
         });

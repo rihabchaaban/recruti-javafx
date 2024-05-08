@@ -85,7 +85,7 @@
                                 <Label fx:id="lblNomMessage" prefHeight="29.0" prefWidth="566.0" textFill="BLACK" />
                                 <HBox prefHeight="30.0" prefWidth="526.0" styleClass="hbox">
                                     <children>
-                                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Domain :" />
+                                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Field :" />
                                         <ComboBox fx:id="txtDomaineBiblio" prefHeight="26.0" prefWidth="240.0" promptText="Choose Domain" styleClass="comboBox" stylesheets="@style.css" />
                                     </children>
                                 </HBox>
@@ -93,8 +93,8 @@
 
                                 <HBox prefHeight="30.0" prefWidth="526.0" styleClass="hbox">
                                     <children>
-                                        <TextField fx:id="txtNewDomain" prefHeight="26.0" prefWidth="240.0" promptText="Add New Domain" styleClass="textfield" stylesheets="@style.css" />
-                                        <Button onAction="#ajouterDomaine" prefHeight="43.0" prefWidth="133.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css" text="Add Domain" />
+                                        <TextField fx:id="txtNewDomain" prefHeight="26.0" prefWidth="240.0" promptText="Add New Field" styleClass="textfield" stylesheets="@style.css" />
+                                        <Button onAction="#ajouterDomaine" prefHeight="43.0" prefWidth="133.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css" text="Add Field" />
                                     </children>
                                 </HBox>
                                 <Pane prefHeight="46.0" prefWidth="51.0" />

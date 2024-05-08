@@ -18,10 +18,7 @@
     <children>
         <HBox prefHeight="70.0" prefWidth="1200.0" style="-fx-background-color: #720000;">
             <children>
-                <Pane prefHeight="70.0" prefWidth="374.0">
-               <children>
-                <TextField fx:id="searchFieldTitle" layoutX="63.0" layoutY="35.0" prefHeight="36.0" prefWidth="225.0" promptText="Search Title" styleClass="textfield" stylesheets="@style.css" />
-               </children></Pane>
+                <Pane prefHeight="70.0" prefWidth="374.0" />
                 <Label prefHeight="36.0" prefWidth="600.0" style="-fx-alignment: Center;" text="Resources List" textFill="WHITE" wrapText="true">
                     <font>
                         <Font name="Cooper Black" size="31.0" />
@@ -58,14 +55,19 @@
                 </HBox>
             </children>
         </HBox>
-        <Label fx:id="totalRessourcesLabel" layoutX="341.0" layoutY="72.0" prefHeight="54.0" prefWidth="650.0" style="-fx-alignment: Center;" text="Total Resources : " textFill="BLACK">
+        <Label fx:id="totalRessourcesLabel" layoutX="687.0" layoutY="67.0" prefHeight="54.0" prefWidth="650.0" style="-fx-alignment: Center;" text="Total Resources : " textFill="BLACK">
             <font>
                 <Font name="Times New Roman" size="30.0" />
             </font>
         </Label>
 
-        <Button layoutX="304.0" layoutY="80.0" onAction="#handleSearch" prefHeight="36.0" prefWidth="124.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css" text="Search" />
-    <TextField fx:id="searchFieldType" layoutX="63.0" layoutY="81.0" prefHeight="36.0" prefWidth="225.0" promptText="Search Type" styleClass="textfield" stylesheets="@style.css" />
-    <TextField fx:id="searchFieldField" layoutX="63.0" layoutY="126.0" prefHeight="36.0" prefWidth="225.0" promptText="Search Field" styleClass="textfield" stylesheets="@style.css" />
+        <Button layoutX="728.0" layoutY="80.0" onAction="#handleSearch" prefHeight="36.0" prefWidth="124.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css" text="Search" />
+    <TextField fx:id="searchFieldType" layoutX="251.0" layoutY="81.0" prefHeight="36.0" prefWidth="225.0" promptText="Search Type" styleClass="textfield" stylesheets="@style.css" />
+    <TextField fx:id="searchFieldField" layoutX="487.0" layoutY="81.0" prefHeight="36.0" prefWidth="225.0" promptText="Search Field" styleClass="textfield" stylesheets="@style.css" />
+        <!-- Boutons pour le tri -->
+        <Button layoutX="274.0" layoutY="138.0" onAction="#sortByTitle" prefHeight="36.0" prefWidth="124.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css" text="Sort by Title" />
+        <Button layoutX="641.0" layoutY="138.0" onAction="#sortByDate" prefHeight="36.0" prefWidth="124.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css" text="Sort by Date" />
+        <Button layoutX="428.0" layoutY="138.0" onAction="#sortByDateDescending" prefHeight="36.0" prefWidth="186.0" snapToPixel="false" styleClass="btn" stylesheets="@style.css" text="Sort by Date Descending" />
+    <TextField fx:id="searchFieldTitle" layoutX="16.0" layoutY="80.0" prefHeight="36.0" prefWidth="225.0" promptText="Search Title" styleClass="textfield" stylesheets="@style.css" />
     </children>
 </AnchorPane>
