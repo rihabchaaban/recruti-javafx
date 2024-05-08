@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="listParticipationPane" prefHeight="574.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.listParticipationController">
+    <children>
+        <Label layoutX="54.0" layoutY="29.0" prefHeight="50.0" prefWidth="328.0" text="| Liste Des Participations" textFill="#898989">
+            <font>
+                <Font name="Cambria Bold" size="26.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="595.0" fitWidth="811.0" layoutY="94.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../../../../../ecran/image1515.png" />
+            </image>
+        </ImageView>
+        <HBox fx:id="vBox" layoutX="45.0" layoutY="99.0" prefHeight="305.0" prefWidth="522.0">
+            <children>
+                <Pane prefHeight="351.0" prefWidth="73.0" />
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
