@@ -1,7 +1,7 @@
 package services;
 
-import entities.IService;
-import entities.Event;
+import models.IService;
+import models.Event;
 
 import utils.MyDB;
 

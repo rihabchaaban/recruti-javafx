@@ -1,8 +1,7 @@
 package services;
 
-import entities.Event;
-import entities.IService;
-import entities.Participation;
+import models.IService;
+import models.Participation;
 import utils.MyDB;
 
 import java.sql.*;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="gestionOfferPane" prefHeight="546.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="conrollers.gestionParticipationController">
+    <children>
+        <ImageView fitHeight="545.0" fitWidth="848.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@image/offre.jpeg" />
+            </image>
+        </ImageView>
+        <Label layoutX="243.0" layoutY="67.0" prefHeight="31.0" prefWidth="362.0" stylesheets="@style1.css" text="Gestion des Participations" textAlignment="CENTER">
+            <font>
+                <Font name="Britannic Bold" size="30.0" />
+            </font></Label>
+        <Button fx:id="btnViewEvent" layoutX="364.0" layoutY="291.0" mnemonicParsing="false" onAction="#goToPages" prefHeight="50.0" prefWidth="120.0" styleClass="btn" stylesheets="@style1.css" text="Afficher" />
+        <ImageView fitHeight="67.0" fitWidth="44.0" layoutX="24.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@image/logo_version_noire.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

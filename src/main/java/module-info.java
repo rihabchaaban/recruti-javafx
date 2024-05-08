@@ -7,6 +7,6 @@ module com.example.gestionoffre {
     requires twilio;
 
 
-    opens gui to javafx.fxml;
-    exports gui;
+    opens conrollers to javafx.fxml;
+    exports conrollers;
 }
