@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="250.0" styleClass="free-delivery-card" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.listEventFrontCardController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="250.0" styleClass="free-delivery-card" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.listEventFrontCardController">
     <children>
         <VBox alignment="CENTER" layoutX="12.0" layoutY="10.0" prefHeight="358.0" prefWidth="230.0">
             <children>
@@ -84,7 +84,7 @@
             </HBox>
                 <HBox alignment="CENTER" prefHeight="42.0" prefWidth="186.0">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#open_UpdateEvent" prefHeight="30.0" prefWidth="41.0" style="-fx-background-color: #096a09;" styleClass="btn-update" stylesheets="@style.css">
+                        <Button mnemonicParsing="false" onAction="#open_UpdateEvent" prefHeight="30.0" prefWidth="41.0" style="-fx-background-color: #096a09;" styleClass="btn-update" stylesheets="@style1.css">
                             <graphic>
                                 <ImageView fitHeight="19.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -94,7 +94,7 @@
                             </graphic>
                   </Button>
                         <Pane prefHeight="42.0" prefWidth="34.0" />
-                        <Button mnemonicParsing="false" onAction="#supprimerEvent" prefHeight="30.0" prefWidth="41.0" style="-fx-background-color: #870101;" styleClass="btn-delete" stylesheets="@style.css">
+                        <Button mnemonicParsing="false" onAction="#supprimerEvent" prefHeight="30.0" prefWidth="41.0" style="-fx-background-color: #870101;" styleClass="btn-delete" stylesheets="@style1.css">
                             <graphic>
                                 <ImageView fitHeight="19.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -104,7 +104,7 @@
                             </graphic>
                         </Button>
                   <Pane prefHeight="42.0" prefWidth="27.0" />
-                  <Button layoutX="143.0" layoutY="16.0" mnemonicParsing="false" onAction="#generatePDF" prefHeight="14.0" prefWidth="19.0" style="-fx-background-color: #870101;" styleClass="btn-delete" stylesheets="@style.css">
+                  <Button layoutX="143.0" layoutY="16.0" mnemonicParsing="false" onAction="#generatePDF" prefHeight="14.0" prefWidth="19.0" style="-fx-background-color: #870101;" styleClass="btn-delete" stylesheets="@style1.css">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>

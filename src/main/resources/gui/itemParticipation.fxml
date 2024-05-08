@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="itemEventPane" prefHeight="313.0" prefWidth="258.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.itemParticipationController">
     <children>
-        <VBox prefHeight="344.0" prefWidth="258.0" styleClass="chosen-card" stylesheets="@style.css">
+        <VBox prefHeight="344.0" prefWidth="258.0" styleClass="chosen-card" stylesheets="@style1.css">
             <children>
                 <HBox prefHeight="50.0" prefWidth="258.0">
                     <children>

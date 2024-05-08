@@ -38,50 +38,50 @@
             <children>
                 <HBox prefHeight="30.0" prefWidth="566.0">
                     <children>
-                        <Label prefHeight="22.0" prefWidth="150.0" styleClass="label-ajout" stylesheets="@style.css" text="nom participant :" />
+                        <Label prefHeight="22.0" prefWidth="150.0" styleClass="label-ajout" stylesheets="@style1.css" text="nom participant :" />
                         <Pane prefHeight="30.0" prefWidth="65.0" />
-                        <TextField fx:id="nameP" prefHeight="26.0" prefWidth="198.0" styleClass="textfield" stylesheets="@style.css" />
+                        <TextField fx:id="nameP" prefHeight="26.0" prefWidth="198.0" styleClass="textfield" stylesheets="@style1.css" />
                     </children>
                 </HBox>
                 <Pane prefHeight="19.0" prefWidth="566.0" />
                 <HBox prefHeight="30.0" prefWidth="566.0">
                     <children>
-                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="feedback :" />
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style1.css" text="feedback :" />
                         <Pane prefHeight="21.0" prefWidth="102.0" />
-                        <TextArea fx:id="txtfeedback" prefHeight="200.0" prefWidth="200.0" styleClass="textarea" stylesheets="@style.css" />
+                        <TextArea fx:id="txtfeedback" prefHeight="200.0" prefWidth="200.0" styleClass="textarea" stylesheets="@style1.css" />
                     </children>
                 </HBox>
                 <Pane prefHeight="19.0" prefWidth="566.0" />
                 <HBox prefHeight="30.0" prefWidth="566.0">
                     <children>
-                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Role :" />
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style1.css" text="Role :" />
                         <Pane prefHeight="21.0" prefWidth="102.0" />
-                        <ComboBox fx:id="txtRole" prefHeight="26.0" prefWidth="198.0" promptText="Choisir Role" styleClass="comboBox" stylesheets="@style.css" />
+                        <ComboBox fx:id="txtRole" prefHeight="26.0" prefWidth="198.0" promptText="Choisir Role" styleClass="comboBox" stylesheets="@style1.css" />
                     </children>
                 </HBox>
                 <Pane prefHeight="19.0" prefWidth="566.0" />
-                <HBox prefHeight="30.0" prefWidth="566.0" styleClass="label-ajout" stylesheets="@style.css">
+                <HBox prefHeight="30.0" prefWidth="566.0" styleClass="label-ajout" stylesheets="@style1.css">
                     <children>
-                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Statut :" />
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style1.css" text="Statut :" />
                         <Pane prefHeight="21.0" prefWidth="102.0" />
-                        <TextField fx:id="txtStatut" prefHeight="26.0" prefWidth="198.0" styleClass="textarea" stylesheets="@style.css" />
+                        <TextField fx:id="txtStatut" prefHeight="26.0" prefWidth="198.0" styleClass="textarea" stylesheets="@style1.css" />
                     </children>
                 </HBox>
                 <Pane prefHeight="19.0" prefWidth="566.0" />
-            <HBox layoutX="10.0" layoutY="166.0" prefHeight="30.0" prefWidth="566.0" styleClass="label-ajout" stylesheets="@style.css">
+            <HBox layoutX="10.0" layoutY="166.0" prefHeight="30.0" prefWidth="566.0" styleClass="label-ajout" stylesheets="@style1.css">
                <children>
-                  <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Name Event : " />
+                  <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style1.css" text="Name Event : " />
                   <Pane prefHeight="21.0" prefWidth="102.0" />
-                  <TextField fx:id="txtnameevent" prefHeight="26.0" prefWidth="198.0" styleClass="textarea" stylesheets="@style.css" />
+                  <TextField fx:id="txtnameevent" prefHeight="26.0" prefWidth="198.0" styleClass="textarea" stylesheets="@style1.css" />
                </children>
             </HBox>
                 <Pane prefHeight="52.0" prefWidth="526.0" />
                 <HBox prefHeight="30.0" prefWidth="566.0">
                     <children>
                         <Pane prefHeight="30.0" prefWidth="138.0" />
-                        <Button fx:id="btnClearParticipation" mnemonicParsing="false" onAction="#clearFieldsParticipation" snapToPixel="false" styleClass="btn" stylesheets="@style.css" text="Annuler" />
+                        <Button fx:id="btnClearParticipation" mnemonicParsing="false" onAction="#clearFieldsParticipation" snapToPixel="false" styleClass="btn" stylesheets="@style1.css" text="Annuler" />
                         <Pane prefHeight="30.0" prefWidth="112.0" />
-                        <Button fx:id="btnAddParticipation" mnemonicParsing="false" onAction="#ajouterParticipation" styleClass="btn" stylesheets="@style.css" text="Participer" />
+                        <Button fx:id="btnAddParticipation" mnemonicParsing="false" onAction="#ajouterParticipation" styleClass="btn" stylesheets="@style1.css" text="Participer" />
                     </children>
                 </HBox>
             </children>

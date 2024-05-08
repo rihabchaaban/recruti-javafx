@@ -14,11 +14,11 @@
                 <Image url="@img/offre.jpeg" />
             </image>
         </ImageView>
-        <Label layoutX="243.0" layoutY="67.0" prefHeight="31.0" prefWidth="362.0" stylesheets="@style.css" text="Gestion des Participations" textAlignment="CENTER">
+        <Label layoutX="243.0" layoutY="67.0" prefHeight="31.0" prefWidth="362.0" stylesheets="@style1.css" text="Gestion des Participations" textAlignment="CENTER">
             <font>
                 <Font name="Britannic Bold" size="30.0" />
             </font></Label>
-        <Button fx:id="btnViewEvent" layoutX="364.0" layoutY="291.0" mnemonicParsing="false" onAction="#goToPages" prefHeight="50.0" prefWidth="120.0" styleClass="btn" stylesheets="@style.css" text="Afficher" />
+        <Button fx:id="btnViewEvent" layoutX="364.0" layoutY="291.0" mnemonicParsing="false" onAction="#goToPages" prefHeight="50.0" prefWidth="120.0" styleClass="btn" stylesheets="@style1.css" text="Afficher" />
         <ImageView fitHeight="67.0" fitWidth="44.0" layoutX="24.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@img/logo_version_noire.png" />
