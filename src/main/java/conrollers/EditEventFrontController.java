@@ -29,7 +29,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EditEventFrontController implements Initializable {
+public class EditEventFrontController {
 
     @FXML
     private Button btnClearEvent;
@@ -65,39 +65,39 @@ public class EditEventFrontController implements Initializable {
 
 
 
-    private Event eventToUpdate;
+    private Event eventToUpdate1;
 
 
     Event event;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+    public void initData(Event event) {
+        eventToUpdate1 = event;
+        // Utiliser eventToUpdate pour initialiser les champs dans l'interface graphique
         ObservableList<String> themes = FXCollections.observableArrayList(
                 "Thème 1", "Thème 2", "Thème 3"); // Adapter les thèmes selon vos besoins
         txtThemeEvent.setItems(themes);
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("listEventFrontCard.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("itemEvent.fxml"));
 
         try {
             AnchorPane anchorPane = fxmlLoader.load();
             VBox hBox = (VBox) anchorPane.getChildren().get(0);
-            listEventFrontCardController item = fxmlLoader.getController();
+            itemEventController item = fxmlLoader.getController();
             EventService os = new EventService();
 
-            event = os.getById(item.getId());
-            txtTitreEvent.setText(String.valueOf(event.getNom_e()));
-            txtContactEvent1.setText(event.getContact_e());
+            txtTitreEvent.setText(String.valueOf(eventToUpdate1.getNom_e()));
+            txtContactEvent1.setText(eventToUpdate1.getContact_e());
             //txtDateEvent.setValue(LocalDate.parse(event.getDate_e())); // Supposant que la date est stockée au format String (ISO_LOCAL_DATE)
-            txtDescriptionEvent.setText(event.getDescription());
-            txtHeureEvent.setText(event.getHeure_e());
-            txtImageEvent.setImage(new Image("file:///C:/Users/hamou/gestionEvent/gestionEvent/src/main/java/uploads/"+event.getImage_e()));
-            imageName = event.getImage_e();
-            txtLocalisationEvent.setText(event.getLieu_e());
-            txtThemeEvent.setValue(event.getTheme_e());
+            txtDescriptionEvent.setText(eventToUpdate1.getDescription());
+            txtHeureEvent.setText(eventToUpdate1.getHeure_e());
+            txtImageEvent.setImage(new Image("file:///C:/Users/hamou/gestionEvent/gestionEvent/src/main/java/uploads/"+eventToUpdate1.getImage_e()));
+            imageName = eventToUpdate1.getImage_e();
+            txtLocalisationEvent.setText(eventToUpdate1.getLieu_e());
+            txtThemeEvent.setValue(eventToUpdate1.getTheme_e());
 
         } catch (IOException ex) {
-            Logger.getLogger(listEventFrontCardController.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (SQLException e) {
-            throw new RuntimeException(e);
+            Logger.getLogger(itemEventController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -192,7 +192,7 @@ public class EditEventFrontController implements Initializable {
         String image = imageName;
 
 
-        Event e = new Event(event.getId(), titre, heure, localisation, description, image , type, contact , date);
+        Event e = new Event(eventToUpdate1.getId(), titre, heure, localisation, description, image , type, contact , date);
         EventService os = new EventService();
         try {
             os.update(e);

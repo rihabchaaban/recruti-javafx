@@ -99,20 +99,27 @@ public class itemEventController {
     }
     @FXML
     void open_Add_Participer(ActionEvent event) throws IOException {
-        Parent fxml = FXMLLoader.load(getClass().getResource("AddParticipation.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddParticipation.fxml"));
+        Parent root = loader.load();
+        addParticipationController controller = loader.getController();
+        controller.initDataP(selectedEvent);
         Stage stage = new Stage();
         stage.setTitle("Add Participation");
-        stage.setScene(new Scene(fxml));
+        stage.setScene(new Scene(root));
         stage.showAndWait();
 
     }
 
     @FXML
     void open_UpdateEvent(ActionEvent event) throws IOException {
-        Parent fxml = FXMLLoader.load(getClass().getResource("EditEvent.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditEvent.fxml"));
+        Parent root = loader.load();
+        EditEventController controller = loader.getController();
+        controller.initData(selectedEvent); // Passer l'événement sélectionné au contrôleur d'édition
         Stage stage = new Stage();
-        stage.setTitle("Update Condidature");
-        stage.setScene(new Scene(fxml));
+        stage.setTitle("Modifier événement");
+        stage.setScene(new Scene(root));
         stage.showAndWait();
     }
 

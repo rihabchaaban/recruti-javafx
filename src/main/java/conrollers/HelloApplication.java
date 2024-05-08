@@ -13,8 +13,8 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 
        //Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-       Parent root = FXMLLoader.load(getClass().getResource("listEventFront.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("listEventFrontCondidat.fxml"));
+       //Parent root = FXMLLoader.load(getClass().getResource("listEventFront.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("listEventFrontCondidat.fxml"));
         stage.setTitle("Event | 2024");
         stage.setScene(new Scene(root));
         stage.show();

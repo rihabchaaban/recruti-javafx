@@ -86,10 +86,14 @@ public class listEventFrontCardCondidatController implements Initializable {
 
     @FXML
     void open_Add_Participer(ActionEvent event) throws IOException {
-        Parent fxml = FXMLLoader.load(getClass().getResource("AddParticipationFront.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddParticipationFront.fxml"));
+        Parent root = loader.load();
+        addParticipationFrontController controller = loader.getController();
+        controller.initDataP(selectedEvent);
         Stage stage = new Stage();
         stage.setTitle("Add Participation");
-        stage.setScene(new Scene(fxml));
+        stage.setScene(new Scene(root));
         stage.showAndWait();
 
     }

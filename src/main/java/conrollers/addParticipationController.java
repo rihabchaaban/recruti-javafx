@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class addParticipationController implements Initializable {
+public class addParticipationController {
 
     @FXML
     private AnchorPane addEventPane;
@@ -48,30 +48,31 @@ public class addParticipationController implements Initializable {
     @FXML
     private TextField txtnameevent;
 
+    private Event eventP1;
     Event event;
-    @Override
-        public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        public void initDataP(Event event) {
+        eventP1 = event;
             ObservableList<String> options = FXCollections.observableArrayList(
                     "info","Genie civil","Electro");
             txtRole.setItems(options);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("itemEvent.fxml"));
             try {
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("itemEvent.fxml"));
+
         AnchorPane anchorPane = fxmlLoader.load();
         VBox hBox = (VBox) anchorPane.getChildren().get(0);
         itemEventController item = fxmlLoader.getController();
         EventService os = new EventService();
 
 
-        event = os.getById(item.getId());
-        txtnameevent.setText(event.getNom_e());
+
+        txtnameevent.setText(eventP1.getNom_e());
 
     }catch (IOException ex) {
                 Logger.getLogger(itemEventController.class.getName()).log(Level.SEVERE, null, ex);
-            }catch (SQLException e) {
-                throw new RuntimeException(e);
             }
 
         }
@@ -108,7 +109,7 @@ public class addParticipationController implements Initializable {
 
 
 
-            Participation p = new Participation( item.getId(),name, statut, feedback, role);
+            Participation p = new Participation( eventP1.getId(),name, statut, feedback, role);
             ParticipationService ps = new ParticipationService();
 
                 ps.add(p);

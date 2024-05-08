@@ -74,11 +74,11 @@ public class listEventFrontCardController implements Initializable {
         this.id = id;
     }
     Event event;
-
+    public Event selectedEvent;
 
     public void setData (Event event) {
         this.event = event;
-
+        this.selectedEvent = event;
 
 
         labelTitreEvent.setText(event.getNom_e());
@@ -109,10 +109,13 @@ public class listEventFrontCardController implements Initializable {
 
     @FXML
     void open_UpdateEvent(ActionEvent event) throws IOException {
-        Parent fxml = FXMLLoader.load(getClass().getResource("EditEventFront.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditEventFront.fxml"));
+        Parent root = loader.load();
+        EditEventFrontController controller = loader.getController();
+        controller.initData(selectedEvent); // Passer l'événement sélectionné au contrôleur d'édition
         Stage stage = new Stage();
-        stage.setTitle("Update Condidature");
-        stage.setScene(new Scene(fxml));
+        stage.setTitle("Modifier événement");
+        stage.setScene(new Scene(root));
         stage.showAndWait();
     }
 
