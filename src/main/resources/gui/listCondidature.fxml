@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="listCondidaturePane" prefHeight="574.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.listCondidatureController">
+    <children>
+        <Label layoutX="54.0" layoutY="29.0" prefHeight="50.0" prefWidth="290.0" text="| Liste Des Condidatures" textFill="#898989">
+            <font>
+                <Font name="Cambria Bold" size="26.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="595.0" fitWidth="811.0" layoutY="94.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/offre.jpeg" />
+            </image>
+        </ImageView>
+        <HBox fx:id="vBox" layoutX="45.0" layoutY="99.0" prefHeight="305.0" prefWidth="522.0">
+            <children>
+                <Pane prefHeight="351.0" prefWidth="73.0" />
+            </children>
+        </HBox>
+      <Button layoutX="522.0" layoutY="42.0" mnemonicParsing="false" onMouseClicked="#genererPDF" styleClass="btn" stylesheets="@style.css" text="PDF" />
+      <ComboBox fx:id="combotyp" layoutX="359.0" layoutY="44.0" onAction="#handleComboBoxAction" prefWidth="150.0" styleClass="comboBox" stylesheets="@style.css" />
+    </children>
+</AnchorPane>

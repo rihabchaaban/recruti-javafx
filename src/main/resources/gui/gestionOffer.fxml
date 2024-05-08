@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="gestionOfferPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.gestionOfferController">
+   <children>
+      <ImageView fitHeight="803.0" fitWidth="1200.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/offre.jpeg" />
+         </image>
+      </ImageView>
+      <Label layoutX="472.0" layoutY="135.0" prefHeight="31.0" prefWidth="255.0" stylesheets="@style.css" text="Gestion des Offres" textAlignment="CENTER">
+         <font>
+            <Font name="Britannic Bold" size="30.0" />
+         </font></Label>
+      <Button fx:id="btnAddOffer" layoutX="311.0" layoutY="362.0" mnemonicParsing="false" onAction="#goToPages" prefHeight="50.0" prefWidth="209.0" styleClass="btn" stylesheets="@style.css" text="Ajouter" />
+      <Button fx:id="btnViewOffer" layoutX="639.0" layoutY="362.0" mnemonicParsing="false" onAction="#goToPages" prefHeight="50.0" prefWidth="210.0" styleClass="btn" stylesheets="@style.css" text="Afficher" />
+      <ImageView fitHeight="50.0" fitWidth="65.0" layoutX="19.0" layoutY="605.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logo_version_noire.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="addOffrePane" prefHeight="546.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.addOfferFrontController">
+    <children>
+        <HBox prefHeight="70.0" prefWidth="714.0" style="-fx-background-color: #720000;">
+            <children>
+                <Pane prefHeight="70.0" prefWidth="248.0" />
+                <Label prefHeight="36.0" prefWidth="458.0" text="Ajouter Offer" textFill="WHITE">
+                    <font>
+                        <Font name="Cooper Black" size="31.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+            </children>
+        </HBox>
+        <ImageView fitHeight="476.0" fitWidth="759.0" layoutY="70.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/offre.jpeg" />
+            </image>
+        </ImageView>
+        <VBox layoutX="102.0" layoutY="86.0" prefHeight="444.0" prefWidth="526.0">
+            <children>
+                <HBox prefHeight="30.0" prefWidth="566.0">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Titre :" />
+                        <Pane prefHeight="21.0" prefWidth="102.0" />
+                        <TextField fx:id="txtTitreOffre" prefHeight="26.0" prefWidth="198.0" styleClass="textfield" stylesheets="@style.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="566.0">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Description :" />
+                        <Pane prefHeight="21.0" prefWidth="102.0" />
+                        <TextArea fx:id="txtDescriptionOffre" prefHeight="200.0" prefWidth="200.0" styleClass="textarea" stylesheets="@style.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="566.0">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Type :" />
+                        <Pane prefHeight="21.0" prefWidth="102.0" />
+                        <ComboBox fx:id="txtTypeOffre" prefHeight="26.0" prefWidth="198.0" promptText="Choisir le type" styleClass="comboBox" stylesheets="@style.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="566.0" styleClass="label-ajout" stylesheets="@style.css">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Localisation :" />
+                        <Pane prefHeight="21.0" prefWidth="102.0" />
+                        <TextField fx:id="txtLocalisationOffre" prefHeight="26.0" prefWidth="198.0" styleClass="textarea" stylesheets="@style.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="566.0" styleClass="label-ajout" stylesheets="@style.css">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" text="Date :" />
+                        <Pane prefHeight="21.0" prefWidth="102.0" />
+                        <DatePicker fx:id="txtDateOffre" prefHeight="26.0" prefWidth="198.0" styleClass="comboBox" stylesheets="@style.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="566.0">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Durée :" />
+                        <Pane prefHeight="21.0" prefWidth="102.0" />
+                        <TextField fx:id="txtDureeOffre" prefHeight="26.0" prefWidth="198.0" styleClass="textfield" stylesheets="@style.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="566.0">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style.css" text="Salaire :" />
+                        <Pane prefHeight="21.0" prefWidth="102.0" />
+                        <TextField fx:id="txtSalaireOffre" prefHeight="26.0" prefWidth="198.0" styleClass="textfield" stylesheets="@style.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="52.0" prefWidth="526.0" />
+                <HBox prefHeight="30.0" prefWidth="566.0">
+                    <children>
+                        <Pane prefHeight="30.0" prefWidth="138.0" />
+                        <Button fx:id="btnClearOffre" mnemonicParsing="false" onAction="#clearFieldsOffre" snapToPixel="false" styleClass="btn" stylesheets="@style.css" text="Annuler" />
+                        <Pane prefHeight="30.0" prefWidth="112.0" />
+                        <Button fx:id="btnAddOffre" mnemonicParsing="false" onAction="#ajouterOffre" styleClass="btn" stylesheets="@style.css" text="Ajouter" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
