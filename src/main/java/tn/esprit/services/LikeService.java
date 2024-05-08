@@ -148,4 +148,21 @@ public class LikeService implements IService<Like> {
     public Like getOne(int id) {
         return null;
     }
+    public List<Integer> getTop3LikedPublicationIds() {
+        List<Integer> top3LikedPublicationIds = new ArrayList<>();
+        String sql = "SELECT publication_id, COUNT(*) AS like_count FROM `like` GROUP BY publication_id ORDER BY like_count DESC LIMIT 3";
+
+        try (PreparedStatement statement = cnx.prepareStatement(sql)) {
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    int publicationId = resultSet.getInt("publication_id");
+                    top3LikedPublicationIds.add(publicationId);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la récupération des IDs des 3 publications les plus likées.", e);
+        }
+        return top3LikedPublicationIds;
+    }
+
 }

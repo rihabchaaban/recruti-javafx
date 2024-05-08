@@ -7,25 +7,38 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.models.Publication;
 import tn.esprit.models.PublicationModel;
 import tn.esprit.services.PublicationService;
+
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class ListPublications implements Initializable {
+
+    @FXML
+    private DatePicker searchDateField;
+    @FXML
+    private TextField searchIdUserField;
+
+    @FXML
+    private TextField searchIdField;
     @FXML
     private AnchorPane listOfferPane;
     @FXML
     private ListView<Publication> publicationListView;
     @FXML
     private TableView<PublicationModel> publicationTableView;
-
+    @FXML
+    private VBox topLikedPostsVBox;
     private PublicationService publicationService;
 
     @Override
@@ -111,9 +124,61 @@ public void loadPublications() {
         }
     });
 
-    // Ajouter la colonne de bouton "View" à la table
+
     publicationTableView.getColumns().add(viewButtonColumn);
 }
+    @FXML
+   public void handleSearchButton(javafx.event.ActionEvent event) {
+
+        String searchText = searchIdField.getText();
+        String searchTextuser = searchIdUserField.getText();
+        LocalDate searchDate = searchDateField.getValue();
+
+        List<Publication> filteredPublications = publicationService.getAll().stream()
+                .filter(publication -> {
+                    boolean matchesId = true;
+                    boolean matchesIduser = true;
+                    boolean matchesDate = true;
+
+
+                    if (!searchText.isEmpty()) {
+                        matchesId = publication.getId() == Integer.parseInt(searchText);
+                    }
+                    if (! searchTextuser.isEmpty()) {
+                        matchesIduser = publication.getUser_id() == Integer.parseInt(searchTextuser);
+                    }
+                    if (searchDate != null) {
+                        matchesDate = publication.getDate_creationpub().toLocalDateTime().toLocalDate().equals(searchDate);
+                    }
+
+                    return matchesId && matchesDate &&  matchesIduser;
+                })
+                .collect(Collectors.toList());
+
+        // Update the table view with filtered publications
+        updateTableView(filteredPublications);
+    }
+
+    private void updateTableView(List<Publication> publications) {
+        List<PublicationModel> publicationModels = publications.stream()
+                .map(publication -> {
+                    try {
+                        return new PublicationModel(
+                                publication.getId(),
+                                publication.getUser_id(),
+                                Profile.filterContent(publication.getContenu()),
+                                publication.getDate_creationpub()
+                        );
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .collect(Collectors.toList());
+
+        publicationTableView.getItems().clear();
+        publicationTableView.getItems().addAll(publicationModels);
+    }
+
 
 
 }

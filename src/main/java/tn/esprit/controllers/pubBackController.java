@@ -42,7 +42,6 @@ public class pubBackController {
 
 
     public void initData(PublicationModel publication) {
-        // Utilisez les détails de la publication pour initialiser les champs de votre interface utilisateur
         postIdTextField.setText(String.valueOf(publication.getId()));
         userIdTextField.setText(String.valueOf(publication.getUserId()));
         contentTextArea.setText(publication.getContenu());

@@ -123,4 +123,20 @@ public class CommentaireService implements IService<Commentaire> {
     public Commentaire getOne(int id) {
         return null;
     }
+    public List<Integer> getTop3CommentedPublicationIds() {
+        List<Integer> top3LikedPublicationIds = new ArrayList<>();
+        String sql = "SELECT publication_id, COUNT(*) AS comment_count FROM `commentaire` GROUP BY publication_id ORDER BY comment_count DESC LIMIT 3";
+
+        try (PreparedStatement statement = cnx.prepareStatement(sql)) {
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    int publicationId = resultSet.getInt("publication_id");
+                    top3LikedPublicationIds.add(publicationId);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la récupération des IDs des 3 publications les plus commentés.", e);
+        }
+        return top3LikedPublicationIds;
+    }
 }

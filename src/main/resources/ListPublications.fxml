@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ListPublications">
    <children>
       <AnchorPane fx:id="listOfferPane" layoutX="-2.0" layoutY="-1.0" prefHeight="575.0" prefWidth="823.0">
          <children>
-            <Label layoutX="53.0" layoutY="4.0" prefHeight="50.0" prefWidth="285.0" text="| List of posts" textFill="#898989">
+            <Label layoutX="53.0" layoutY="26.0" prefHeight="81.0" prefWidth="285.0" text="| List of posts" textFill="#898989">
                <font>
                   <Font name="Cambria Bold" size="26.0" />
                </font>
@@ -21,12 +25,22 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <ImageView fitHeight="562.0" fitWidth="862.0" layoutX="-26.0" layoutY="9.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="574.0" fitWidth="862.0" layoutX="-22.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/offre.jpeg" />
                </image>
             </ImageView>
-            <TableView fx:id="publicationTableView" layoutX="135.0" layoutY="128.0" maxHeight="500.0" maxWidth="800.0" prefHeight="400.0" prefWidth="546.0">
+            <HBox layoutX="61.0" layoutY="109.0" spacing="10">
+               <Label text="ID:" />
+               <TextField fx:id="searchIdField" />
+               <Label text="User Id:" />
+               <TextField fx:id="searchIdUserField" />
+               <Label text="Date:" />
+               <DatePicker fx:id="searchDateField" />
+               <!-- Ajoutez d'autres critères de recherche ici si nécessaire -->
+               <Button onAction="#handleSearchButton" text="Search" />
+            </HBox>
+            <TableView fx:id="publicationTableView" layoutX="61.0" layoutY="151.0" maxHeight="500.0" maxWidth="800.0" prefHeight="116.0" prefWidth="667.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
