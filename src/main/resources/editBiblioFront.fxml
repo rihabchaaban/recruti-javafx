@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="editBiblioFront" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="1233.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditBiblioFrontController">
+    <children>
+
+        <HBox layoutY="23.0" prefHeight="46.0" prefWidth="1233.0" style="-fx-background-color: #720000;">
+            <children>
+                <Pane prefHeight="46.0" prefWidth="51.0" />
+                <Label prefHeight="51.0" prefWidth="240.0" style="-fx-text-fill: #FFFF;" text="Recruti">
+                    <font>
+                        <Font name="Cambria Bold" size="31.0" />
+                    </font>
+                </Label>
+                <Pane prefHeight="46.0" prefWidth="406.0" />
+                <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="78.0" styleClass="nav-btn-front" stylesheets="@style1.css" text="Home">
+                    <HBox.margin>
+                        <Insets top="5.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="103.0" styleClass="nav-btn-front" stylesheets="@style1.css" text="Libraries">
+                    <HBox.margin>
+                        <Insets left="10.0" top="5.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="120.0" styleClass="nav-btn-front" stylesheets="@style1.css" text="Contact Us">
+                    <HBox.margin>
+                        <Insets left="10.0" top="5.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+        <ImageView fx:id="background" fitHeight="827.0" fitWidth="1293.0" layoutX="-7.0" layoutY="223.0" opacity="0.9" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@image/offre.jpeg" />
+            </image>
+        </ImageView>
+        <Label layoutX="28.0" layoutY="169.0" style="-fx-text-fill: #720000;" text=" Our Libraries" textFill="GOLDENROD">
+            <font>
+                <Font name="System Bold" size="36.0" />
+            </font>
+        </Label>
+        <Label layoutX="51.0" layoutY="105.0" style="-fx-text-fill: BLACK;" text="OUR SERVICES FOR YOU">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="22.0" layoutY="127.0" style="-fx-text-fill: #720000;" text="You can check" textFill="GOLDENROD">
+            <font>
+                <Font name="System Bold" size="36.0" />
+            </font>
+        </Label>
+        <Label layoutX="560.0" layoutY="105.0" prefHeight="98.0" prefWidth="406.0" text="Edit Library" textFill="BLACK">
+            <font>
+                <Font name="System Bold" size="50.0" />
+            </font>
+        </Label>
+        <HBox fx:id="hbox" layoutX="112.0" layoutY="372.0" prefHeight="353.0" prefWidth="1012.0" styleClass="hbox">
+            <children>
+                <HBox fx:id="vbox" prefHeight="423.0" prefWidth="1012.0">
+                <children>
+                   <VBox layoutX="102.0" layoutY="86.0" prefHeight="472.0" prefWidth="590.0">
+                     <children>
+                <HBox prefHeight="30.0" prefWidth="526.0">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style1.css" text="Name :" />
+                        <TextField fx:id="txtNomBiblio" prefHeight="26.0" prefWidth="240.0" promptText="Name Library" styleClass="textfield" stylesheets="@style1.css" />
+                    </children>
+                </HBox>
+                <Label fx:id="lblNomMessage" prefHeight="29.0" prefWidth="566.0" textFill="RED" />
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+
+                <HBox prefHeight="30.0" prefWidth="526.0" styleClass="hbox">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style1.css" text="Field :" />
+                        <ComboBox fx:id="txtDomaineBiblio" prefHeight="26.0" prefWidth="240.0" promptText="Choose Field" styleClass="comboBox" stylesheets="@style1.css" />
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="526.0" styleClass="hbox">
+                    <children>
+                        <TextField fx:id="txtNewDomain" prefHeight="26.0" prefWidth="240.0" promptText="Add New Domain" styleClass="textfield" stylesheets="@style1.css"/>
+                        <Button text="Add Field" onAction="#ajouterDomaine"  prefHeight="43.0" prefWidth="133.0" snapToPixel="false" styleClass="btn" stylesheets="@style1.css" />
+                    </children>
+                    <padding>
+                        <Insets left="126.0" />
+                    </padding>
+                </HBox>
+
+                <Label fx:id="lblDomaineMessage" prefHeight="29.0" prefWidth="566.0" textFill="RED" />
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="526.0">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style1.css" text="Date :" />
+                        <DatePicker fx:id="txtDateBiblio" prefHeight="26.0" prefWidth="240.0" promptText="Creation Date" styleClass="textfield" stylesheets="@style1.css"/>
+                    </children>
+                </HBox>
+                <Label fx:id="lblDateMessage" prefHeight="29.0" prefWidth="566.0" textFill="RED" />
+                <Label fx:id="lblDateMessage2" prefHeight="29.0" prefWidth="566.0" textFill="RED" />
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="526.0">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="113.0" styleClass="label-ajout" stylesheets="@style1.css" text="Image :" />
+                        <Button text="Choose An Image" onAction="#ajouterImage"  mnemonicParsing="false" prefHeight="30.0" prefWidth="240.0" styleClass="btn" stylesheets="@style1.css" />
+                    </children>
+                </HBox>
+                <Label fx:id="lblImageMessage" prefHeight="29.0" prefWidth="566.0" textFill="RED" />
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="526.0">
+                    <children>
+                        <ImageView fx:id="imageViewBiblio" fitHeight="150.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true"  />
+                    </children>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="526.0">
+                    <children>
+                        <Button fx:id="btnRetour" onAction="#goToPages" prefHeight="43.0" prefWidth="133.0" snapToPixel="false" styleClass="btn" stylesheets="@style1.css" text="Back" />
+                        <Pane prefHeight="56.0" prefWidth="66.0" />
+                        <Button fx:id="btnUpdateBiblio" prefHeight="43.0" prefWidth="133.0" snapToPixel="false" styleClass="btn" stylesheets="@style1.css" mnemonicParsing="false" onAction="#updateBiblio" text="Edit Library"  />
+                        <Pane prefHeight="56.0" prefWidth="66.0" />
+                        <Button fx:id="btnClearBiblio" onAction="#clearFieldsBiblio" prefHeight="43.0" prefWidth="133.0" snapToPixel="false" styleClass="btn" stylesheets="@style1.css" mnemonicParsing="false" text="Clear" />
+                    </children>
+                </HBox>
+                     </children>
+                   </VBox>
+                </children>
+
+                </HBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

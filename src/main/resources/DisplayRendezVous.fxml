@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayRendezVousController">
+    <HBox prefHeight="63.0" prefWidth="800.0" style="-fx-background-color: #720000;">
+      <children>
+         <Label alignment="TOP_RIGHT" prefHeight="46.0" prefWidth="349.0" text="Appointment" textFill="#cd181f">
+            <font>
+               <Font name="Calibri Light Italic" size="51.0" />
+            </font>
+         </Label>
+      </children></HBox>
+    <ScrollPane fx:id="recherche" layoutX="30.0" layoutY="73.0" prefHeight="310.0" prefWidth="505.0">
+        <content>
+            <AnchorPane>
+                <VBox alignment="CENTER" spacing="10">
+                    <Label alignment="CENTER" prefHeight="30.0" prefWidth="504.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" styleClass="textfield" stylesheets="@styles.css" text="appointment list" textFill="#720000">
+                        <font>
+                            <Font name="Arial Black" size="15.0" />
+                        </font>
+                    </Label>
+                    <VBox fx:id="rendezVousList" alignment="CENTER" spacing="5">
+
+                    </VBox>
+                </VBox>
+            </AnchorPane>
+        </content>
+    </ScrollPane>
+    <VBox layoutX="348.0" layoutY="14.0" prefHeight="42.0" prefWidth="42.0" />
+    <VBox layoutX="400.0" layoutY="14.0" prefHeight="56.0" prefWidth="87.0" />
+    <VBox layoutX="471.0" layoutY="12.0" prefHeight="56.0" prefWidth="121.0">
+      <children>
+            <Button alignment="CENTER" onAction="#navigateToAddInterface" prefHeight="31.0" prefWidth="119.0" styleClass="btn" stylesheets="@styles.css" text="Add" textFill="#720000">
+                <font>
+                    <Font name="System Bold Italic" size="12.0" />
+                </font>
+            </Button>
+      </children></VBox>
+    <Button alignment="CENTER_RIGHT" layoutX="269.0" layoutY="393.0" onAction="#Afficherstat" styleClass="btn" stylesheets="@styles.css" text="Statestiques" textFill="#720000">
+        <font>
+            <Font name="System Bold Italic" size="15.0" />
+        </font>
+    </Button>
+    <Button fx:id="btnpdf" layoutX="114.0" layoutY="393.0" mnemonicParsing="false" onAction="#generatePDF" prefHeight="25.0" prefWidth="105.0" styleClass="btn" stylesheets="@styles.css" text="pdf" textFill="#720000">
+        <font>
+            <Font name="System Bold Italic" size="12.0" />
+        </font>
+    </Button>
+    <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="637.0" layoutY="68.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#navigateToPlaceInterface" styleClass="btn" stylesheets="@styles.css" text="     place " textAlignment="CENTER" textFill="#720000" textOverrun="CLIP">
+        <font>
+            <Font name="System Bold Italic" size="15.0" />
+        </font>
+    </Button>
+    <ImageView fitHeight="114.0" fitWidth="114.0" layoutX="661.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@/image/.idea/418968138_787473206535162_7722301878134623870_n.png" />
+        </image>
+    </ImageView>
+
+</AnchorPane>

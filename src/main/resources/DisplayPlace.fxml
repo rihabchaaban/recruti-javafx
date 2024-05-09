@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayPlaceController">
+
+    <children>
+        <HBox prefHeight="63.0" prefWidth="778.0" style="-fx-background-color: #720000;">
+            <children>
+                <VBox prefHeight="42.0" prefWidth="42.0" />
+                <Label alignment="CENTER" prefHeight="56.0" prefWidth="341.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="PLACE" textFill="#391d1e">
+                    <font>
+                        <Font name="Calibri Light Italic" size="86.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="stateFilterComboBox" prefHeight="45.0" promptText="Select State" styleClass="btn" stylesheets="@styles.css" />
+
+                <Button alignment="CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" onAction="#applyFilters" prefHeight="61.0" prefWidth="216.0" styleClass="btn" stylesheets="@styles.css" text="Apply Filters" textAlignment="RIGHT" textFill="#cd181f" textOverrun="CLIP">
+                    <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+        <ScrollPane layoutX="23.0" layoutY="126.0" prefHeight="358.0" prefWidth="359.0" styleClass="scroll-pane-content" stylesheets="@styles.css">
+            <content>
+                <AnchorPane prefHeight="370.0" prefWidth="423.0">
+                    <VBox alignment="CENTER" spacing="10">
+                        <VBox fx:id="placeList" alignment="CENTER" spacing="5">
+
+                        </VBox>
+                    </VBox>
+                    <HBox alignment="CENTER_RIGHT" layoutX="215.0" spacing="10.0" />
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+        <Label alignment="CENTER" layoutX="24.0" layoutY="70.0" prefHeight="30.0" prefWidth="358.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" styleClass="textfield" text="Place list" textFill="#720000">
+            <font>
+                <Font name="Arial Black" size="15.0" />
+            </font>
+        </Label>
+        <Button alignment="CENTER" layoutX="389.0" layoutY="74.0" onAction="#navigateToAddInterface" prefHeight="40.0" prefWidth="111.0" styleClass="btn" stylesheets="@styles.css" text="Add" textFill="#cd181f">
+            <font>
+                <Font name="System Bold Italic" size="15.0" />
+            </font>
+        </Button>
+        <Button alignment="CENTER_RIGHT" layoutX="631.0" layoutY="74.0" onAction="#navigateToRDVInterface" prefHeight="42.0" prefWidth="114.0" styleClass="btn" stylesheets="@styles.css" text="RendezVous" textFill="#cd181f">
+            <font>
+                <Font name="System Bold Italic" size="14.0" />
+            </font>
+        </Button>
+        <VBox layoutX="449.0" layoutY="184.0" prefHeight="56.0" prefWidth="87.0" />
+        <Button layoutX="508.0" layoutY="74.0" mnemonicParsing="false" onAction="#map" prefHeight="42.0" prefWidth="150.0" styleClass="btn" stylesheets="@styles.css" text="Google map" textFill="#cd181f">
+            <font>
+                <Font name="System Bold Italic" size="14.0" />
+            </font>
+        </Button>
+        <ImageView fitHeight="105.0" fitWidth="115.0" layoutX="639.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@/image/.idea/418968138_787473206535162_7722301878134623870_n.png" />
+            </image>
+        </ImageView>
+
+
+    </children>
+</AnchorPane>

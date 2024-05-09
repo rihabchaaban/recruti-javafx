@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="946.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.menusandcharts.MenuAppWithChartController">
+
+    <children>
+        <BorderPane fx:id="borderPane" layoutX="65.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="653.0" />
+      <HBox alignment="CENTER_RIGHT" prefHeight="93.0" prefWidth="946.0" spacing="20.0" style="-fx-background-color: #720000;" styleClass="search-container">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="137.0" prefWidth="162.0" spacing="10.0" styleClass="right-side-border">
+               <HBox.margin>
+                  <Insets right="250.0" />
+               </HBox.margin>
+            </HBox>
+            <Text fill="#fafafa" strokeType="OUTSIDE" strokeWidth="0.0" text="Our Statistics ">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="127.0" prefWidth="251.0" spacing="20.0" styleClass="transparent">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </HBox>
+         </children>
+      </HBox>
+        <ImageView fitHeight="106.0" fitWidth="162.0" layoutX="786.0" layoutY="459.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@/image/.idea/418968138_787473206535162_7722301878134623870_n.png" />
+            </image>
+        </ImageView>
+
+    </children>
+</AnchorPane>

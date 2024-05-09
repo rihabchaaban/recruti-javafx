@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="48.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PostbackController">
+   <children>
+      <VBox fx:id="pubContainer" alignment="TOP_CENTER" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="105.0" prefWidth="723.0" spacing="2.0" styleClass="post-background" stylesheets="/styles.css">
+         <children>
+            <HBox alignment="CENTER_LEFT" maxHeight="20.0" prefHeight="20.0" prefWidth="723.0" spacing="10.0">
+               <children>
+                  <ImageView fx:id="imgProfile" fitHeight="41.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/user.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="CENTER" prefHeight="48.0" prefWidth="185.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="19.0" prefWidth="103.0">
+                           <children>
+                              <Label fx:id="username" text="NomUser">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="imgVerified" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/ic_verified.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="128.0">
+                           <children>
+                              <Label fx:id="date" textFill="#616770">
+                                 <font>
+                                    <Font name="Segoe UI Historic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="audience" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/ic_public.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Pane prefHeight="18.0" prefWidth="519.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+            <TextArea fx:id="captionpub" editable="false" maxHeight="120.0" maxWidth="683.0" prefHeight="10.0" prefWidth="683.0" promptText="text pub" style="-fx-background-color: transparent;" wrapText="true">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </TextArea>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

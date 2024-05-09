@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="statisticsPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.statistics">
+    <children>
+        <HBox prefHeight="70.0" prefWidth="1200.0" style="-fx-background-color: #720000;">
+            <children>
+                <Pane prefHeight="70.0" prefWidth="374.0" />
+                <Label prefHeight="36.0" prefWidth="458.0" style="-fx-alignment: Center;" text="Statistics" textFill="WHITE">
+                    <font>
+                        <Font name="Cooper Black" size="31.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+            </children>
+        </HBox>
+        <ImageView fitHeight="803.0" fitWidth="1200.0" layoutY="70.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@image/offre.jpeg" />
+            </image>
+        </ImageView>
+        <VBox layoutX="163.0" layoutY="115.0" prefHeight="605.0" prefWidth="813.0" spacing="20">
+            <children>
+                <HBox prefHeight="36.0" prefWidth="1018.0" style="-fx-background-color: #720000;">
+                    <children>
+                        <Label fx:id="totalLibrariesLabel" prefHeight="36.0" prefWidth="450.0" style="-fx-text-fill: white; -fx-alignment: center;" text="Total Libraries: ">
+                            <font>
+                                <Font name="Cooper Black" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="totalResourcesLabel" prefHeight="36.0" prefWidth="400.0" style="-fx-text-fill: white; -fx-alignment: center;" text="Total Resources: ">
+                            <font>
+                                <Font name="Cooper Black" size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <Label prefHeight="54.0" prefWidth="215.0" style="-fx-font-size: 20; -fx-text-fill: #720000;" text="Resources per Library :">
+               <font>
+                  <Font name="Cambria" size="48.0" />
+               </font></Label>
+                <BarChart fx:id="resourcesPerLibraryChart" prefHeight="389.0" prefWidth="792.0">
+                    <xAxis>
+                        <CategoryAxis />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis />
+                    </yAxis>
+                </BarChart>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

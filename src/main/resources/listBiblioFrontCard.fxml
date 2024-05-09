@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.image.ImageView?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="203.0" prefWidth="250.0" styleClass="free-delivery-card" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.listBiblioFrontCardController">
+    <children>
+        <VBox alignment="CENTER" layoutX="12.0" layoutY="10.0" prefHeight="180.0" prefWidth="229.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="41.0" prefWidth="229.0">
+                    <children>
+                        <Label fx:id="labelNomBiblio" contentDisplay="CENTER" prefHeight="34.0" prefWidth="229.0" style="-fx-alignment: center;" text="Name" textAlignment="CENTER" textFill="#720000" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
+                            <font>
+                                <Font name="Cambria Bold" size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets left="20.0" right="20.0" />
+                    </opaqueInsets>
+                </HBox>
+                <Pane prefHeight="16.0" prefWidth="230.0" />
+                <HBox alignment="CENTER" prefHeight="31.0" prefWidth="229.0">
+                    <children>
+                        <Label fx:id="labelDomaineBiblio" contentDisplay="CENTER" prefHeight="26.0" prefWidth="229.0" style="-fx-alignment: center; -fx-text-fill: black;" text="Field" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="31.0" prefWidth="229.0">
+                    <children>
+                        <Label fx:id="labelDateBiblio" contentDisplay="CENTER" prefHeight="26.0" prefWidth="229.0" style="-fx-alignment: center; -fx-text-fill: black;" text="Date" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox><HBox prefHeight="130.0" prefWidth="258.0">
+                <children>
+                    <Pane prefHeight="150.0" prefWidth="28.0" />
+                    <ImageView fx:id="labelImageBiblio" fitHeight="135.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true" />
+                </children>
+            </HBox>
+                <Pane prefHeight="61.0" prefWidth="12.0" />
+                <Pane prefHeight="21.0" prefWidth="230.0" />
+                <HBox alignment="CENTER" prefHeight="42.0" prefWidth="186.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#openShowRessource" prefHeight="30.0" prefWidth="142.0" styleClass="btn" text="Show Resources" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

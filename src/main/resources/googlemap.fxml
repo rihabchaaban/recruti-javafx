@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.web.WebView?>
+
+<!-- ... existing code ... -->
+
+<AnchorPane prefHeight="789.0" prefWidth="1169.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.googlemapController">
+    <children>
+
+
+        <AnchorPane prefHeight="563.0" prefWidth="1116.0" style="-fx-background-color: #f2f2f2;">
+            <children>
+
+
+                <Pane layoutX="82.0" layoutY="43.0" prefHeight="473.0" prefWidth="1034.0" style="-fx-background-color: #fff; -fx-border-radius: 3px;">
+                    <children>
+
+                        <WebView fx:id="googleMapsWebView" layoutX="1.0" prefHeight="474.0" prefWidth="864.0" />
+
+                    </children>
+                </Pane>
+            </children>
+        </AnchorPane>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="922.0" layoutY="597.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@/image/.idea/418968138_787473206535162_7722301878134623870_n.png" />
+            </image>
+        </ImageView>
+
+    </children>
+</AnchorPane>

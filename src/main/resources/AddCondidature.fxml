@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="546.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddCondidatureController">
+    <children>
+      <ImageView fitHeight="486.0" fitWidth="768.0" layoutY="60.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/postule.jpg" />
+         </image>
+      </ImageView>
+      <HBox prefHeight="62.0" prefWidth="729.0" style="-fx-background-color: #720000;">
+         <children>
+            <Pane prefHeight="62.0" prefWidth="230.0" />
+              <Label text="Ajouter Postule" textFill="WHITE">
+               <font>
+                  <Font name="Cooper Black" size="31.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+        <VBox layoutX="93.0" layoutY="88.0" prefHeight="444.0" prefWidth="526.0">
+            <children>
+                <HBox prefHeight="30.0" prefWidth="566.0">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="180.0" styleClass="label-ajout" stylesheets="@style1.css" text="Nom :" />
+                        <Pane prefHeight="21.0" prefWidth="102.0" />
+                        <TextField fx:id="txtNomCond" prefHeight="26.0" prefWidth="198.0" styleClass="textfield" stylesheets="@style1.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="566.0">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="180.0" styleClass="label-ajout" stylesheets="@style1.css" text="Email :" />
+                        <Pane prefHeight="21.0" prefWidth="102.0" />
+                        <TextField fx:id="txtEmailCond" prefHeight="26.0" prefWidth="198.0" styleClass="textfield" stylesheets="@style1.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="566.0">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="180.0" styleClass="label-ajout" stylesheets="@style1.css" text="CV :" />
+                        <Pane prefHeight="21.0" prefWidth="102.0" />
+                  <Button mnemonicParsing="false" onAction="#ajouterImage" prefHeight="26.0" prefWidth="60.0" text="Upload" />
+                  <Pane prefHeight="30.0" prefWidth="13.0" />
+                  <ImageView fx:id="txtCvCond" fitHeight="150.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <HBox prefHeight="30.0" prefWidth="566.0" styleClass="label-ajout" stylesheets="@style1.css">
+                    <children>
+                        <Label prefHeight="22.0" prefWidth="180.0" styleClass="label-ajout" stylesheets="@style1.css" text="Lettre de motivation :" />
+                        <Pane prefHeight="21.0" prefWidth="102.0" />
+                        <TextArea fx:id="txtLettreCond" prefHeight="200.0" prefWidth="200.0" styleClass="textarea" stylesheets="@style1.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <Pane prefHeight="19.0" prefWidth="566.0" />
+                <Pane prefHeight="52.0" prefWidth="526.0" />
+                <HBox prefHeight="30.0" prefWidth="566.0">
+                    <children>
+                        <Pane prefHeight="30.0" prefWidth="138.0" />
+                        <Button fx:id="btnClearCond" mnemonicParsing="false" onAction="#clearFieldsCondidature" styleClass="btn" stylesheets="@style1.css" text="Annuler" />
+                        <Pane prefHeight="30.0" prefWidth="112.0" />
+                        <Button fx:id="btnAddCond" mnemonicParsing="false" onAction="#addCondidature" styleClass="btn" stylesheets="@style1.css" text="Postuler" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

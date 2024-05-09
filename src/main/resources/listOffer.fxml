@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="listOfferPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.listOfferController">
+    <children>
+        <Label layoutX="54.0" layoutY="29.0" prefHeight="50.0" prefWidth="290.0" text="| Liste Des Offres" textFill="#898989" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="50.0">
+            <font>
+                <Font name="Cambria Bold" size="26.0" />
+            </font>
+        </Label>
+      <ImageView fitHeight="801.0" fitWidth="1221.0" layoutY="-7.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/offre.jpeg" />
+         </image>
+      </ImageView>
+      <HBox fx:id="hbox" layoutX="220.0" layoutY="277.0" prefHeight="354.0" prefWidth="811.0" styleClass="hbox">
+         <children>
+            <HBox fx:id="vbox" prefHeight="353.0" prefWidth="1014.0">
+               <children>
+                  <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0" styleClass="grid">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                     </rowConstraints>
+                  </GridPane>
+                  <Pagination fx:id="pag" maxPageIndicatorCount="3" prefHeight="353.0" prefWidth="875.0" style="-fx-color: #720000;">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Pagination>
+               </children>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </HBox>
+         </children>
+      </HBox>
+      <Button layoutX="926.0" layoutY="181.0" mnemonicParsing="false" onAction="#openStat" styleClass="btn" stylesheets="@style1.css" text="Statistiques" />
+      <Button layoutX="799.0" layoutY="180.0" mnemonicParsing="false" onAction="#exportExcel" styleClass="btn" stylesheets="@style1.css" text="Export excel" />
+    </children>
+</AnchorPane>

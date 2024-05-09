@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="listEventPane" prefHeight="574.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.listEventController">
+    <children>
+        <Label layoutX="54.0" layoutY="29.0" prefHeight="50.0" prefWidth="290.0" text="| Liste Des Evenement" textFill="#898989" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="50.0">
+            <font>
+                <Font name="Cambria Bold" size="26.0" />
+            </font>
+        </Label>
+        <HBox fx:id="vBox" layoutX="170.0" layoutY="149.0" prefHeight="305.0" prefWidth="522.0">
+            <children>
+                <Pane prefHeight="351.0" prefWidth="73.0" />
+            </children>
+        </HBox>
+      <ImageView fitHeight="801.0" fitWidth="1213.0" layoutX="-2.0" layoutY="3.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/offre.jpeg" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

@@ -1,0 +1,449 @@
+.post-background{
+    -fx-background-color: #fff;
+    -fx-background-radius: 15;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1) , 5.0, 0.0, 0.0, 5.0);
+}
+
+.reactions-container{
+    -fx-background-color: #fff;
+    -fx-background-radius: 50;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1) , 5.0, 0.0, 0.0, 5.0);
+    -fx-border-width: 1;
+    -fx-border-color:#B8B9BB;
+    -fx-border-radius: 50;
+}
+
+.top-border{
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: #606266;
+}
+.table-pane {
+    -fx-background-color: #f2f2f2;
+}
+
+.card-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-color: #c0c0c0;
+    -fx-border-width: 1px;
+}
+
+.table-view {
+    -fx-background-color: #f2f2f2;
+}
+
+.detail-pane {
+    -fx-background-color: #f2f2f2;
+}
+
+.form-pane {
+    -fx-background-color: white;
+    -fx-border-radius: 3px;
+}
+
+.btn{
+    -fx-background-color: #720000;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-font-family:"System";
+    -fx-font-weight:800;
+    -fx-cursor: hand;
+}
+
+.btn1{
+    -fx-background-color: #228B22;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-font-family:"System";
+    -fx-font-weight:800;
+    -fx-cursor: hand;
+}
+.btn:hover{
+    -fx-background-color: #920303FF;
+    -fx-text-fill: #fff;
+}
+
+
+.comboBox{
+    -fx-background-color: linear-gradient(to bottom, #efefef, #eee);
+    -fx-border-color: #720000;
+    -fx-border-width: .8px;
+    -fx-font-family: "Cambria";
+    -fx-border-radius: 4px;
+}
+
+.comboBox:selected{
+    -fx-border-width: 2px;
+}
+
+.textfield{
+    -fx-background-color: linear-gradient(to bottom, #efefef, #eee);
+    -fx-border-color: #720000;
+    -fx-border-width: .8px;
+    -fx-font-family: "Cambria";
+    -fx-border-radius: 4px;
+}
+
+.textarea{
+    -fx-background-color: linear-gradient(to bottom, #efefef, #eee);
+    -fx-border-color: #720000;
+    -fx-border-width: .8px;
+    -fx-font-family: "Cambria";
+    -fx-border-radius: 4px;
+}
+
+.textarea:focused{
+    -fx-border-width: 1.8px;
+    -fx-background-color: #fff;
+}
+
+.label-ajout{
+    -fx-text-fill: #720000;
+    -fx-font-size:18px;
+    -fx-font-family:"Cambria";
+    -fx-font-weight: 800;
+}
+
+.imageHolderf{
+    -fx-background-image: url("https://png.pngtree.com/background/20210710/original/pngtree-cartoon-flat-job-interview-looking-for-job-background-illustration-picture-image_998099.jpg");
+    -fx-background-position:center center;
+    -fx-background-repeat:stretch; -fx-background-size:cover;
+}
+.title-label {
+    -fx-font-family: "Cambria";
+    -fx-font-size: 26px;
+    -fx-text-fill: #990000; /* Rouge bordeaux */
+}
+
+.header-label {
+    -fx-font-family: "Cambria";
+    -fx-font-size: 16px;
+    -fx-text-fill: #000000; /* Noir */
+}
+
+.chosen-card{
+    -fx-background-color: #990000;
+    -fx-background-radius: 30;
+}
+
+.search-box{
+    -fx-background-color:#FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.search-button{
+    -fx-background-color: #828282;
+    -fx-background-radius: 30;
+}
+
+.right-bar{
+    -fx-background-color: #720000;
+}
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+}
+
+.chosen-fruit-card{
+    -fx-background-color: #F16C31;
+    -fx-background-radius: 30;
+}
+
+.comboBox{
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-radius: 30;
+}
+
+.add-btn{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.free-delivery-card{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.shopping-online-card{
+    -fx-background-color: #F0E68C;
+    -fx-background-radius: 30;
+}
+
+.fruit-item{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.nav-btn{
+    -fx-background-color: #720000;
+    -fx-cursor: hand;
+    -fx-font-family: "Cambria";
+    -fx-font-size: 20px;
+    -fx-text-fill: #fff;
+    -fx-alignment: left;
+}
+
+.nav-btn:hover{
+    -fx-background-color: #870101;
+    -fx-text-fill: #fff;
+}
+
+.btn{
+    -fx-background-color: #720000;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-font-family:"System";
+    -fx-font-weight:800;
+    -fx-cursor: hand;
+}
+
+.btn:hover{
+    -fx-background-color: #720000;
+    -fx-text-fill: #fff;
+}
+
+
+.comboBox{
+    -fx-background-color: linear-gradient(to bottom, #efefef, #eee);
+    -fx-border-color: #720000;
+    -fx-border-width: .8px;
+    -fx-font-family: "Cambria";
+    -fx-border-radius: 4px;
+}
+
+.comboBox:selected{
+    -fx-border-width: 2px;
+}
+
+.textfield{
+    -fx-background-color: linear-gradient(to bottom, #efefef, #eee);
+    -fx-border-color: #720000;
+    -fx-border-width: .8px;
+    -fx-font-family: "Cambria";
+    -fx-border-radius: 4px;
+}
+
+.textarea{
+    -fx-background-color: linear-gradient(to bottom, #efefef, #eee);
+    -fx-border-color: #720000;
+    -fx-border-width: .8px;
+    -fx-font-family: "Cambria";
+    -fx-border-radius: 4px;
+}
+
+.textarea:focused{
+    -fx-border-width: 1.8px;
+    -fx-background-color: #fff;
+}
+
+.label-ajout{
+    -fx-text-fill: #720000;
+    -fx-font-size:18px;
+    -fx-font-family:"Cambria";
+    -fx-font-weight: 800;
+}
+
+.btn-update{
+    -fx-background-color: #259d02;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #878787;
+    -fx-font-size:14px;
+    -fx-font-family:"System";
+    -fx-font-weight:800;
+    -fx-cursor: hand;
+}
+
+.btn-update:hover{
+    -fx-background-color: #197703;
+    -fx-text-fill: #fff;
+}
+
+.btn-delete{
+    -fx-background-color: #d50505;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #878787;
+    -fx-font-size:14px;
+    -fx-font-family:"System";
+    -fx-font-weight:800;
+    -fx-cursor: hand;
+}
+
+.btn-delete:hover{
+    -fx-background-color: #720000;
+    -fx-text-fill: #fff;
+}
+
+.label-item{
+    -fx-text-fill: #DAA520;
+    -fx-font-size:18px;
+    -fx-font-family:"Cambria";
+    -fx-font-weight: 800;
+}
+
+.nav-btn-front{
+    -fx-background-color: #720000;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-font-family:"System";
+    -fx-font-weight:800;
+    -fx-cursor: hand;
+}
+
+.nav-btn-front:hover{
+    -fx-background-color: #870101;
+    -fx-text-fill: #fff;
+}
+/* Style pour le contenu de la ScrollPane */
+.scroll-pane-content {
+    -fx-background-color: #f0f0f0; /* Couleur de fond du contenu de la ScrollPane */
+    /* Autres styles */
+}
+
+/* Style pour les boutons "Update" et "Delete" */
+.btn-update {
+    -fx-background-color: #007bff; /* Couleur de fond pour le bouton Update */
+    -fx-text-fill: white; /* Couleur du texte pour le bouton Update */
+    /* Autres styles */
+}
+
+.btn-delete {
+    -fx-background-color: #dc3545; /* Couleur de fond pour le bouton Delete */
+    -fx-text-fill: white; /* Couleur du texte pour le bouton Delete */
+    /* Autres styles */
+}
+/* styles.css */
+
+/* Style pour la barre de titre */
+.hbox-title {
+    -fx-background-color: #720000;
+}
+
+/* Style pour le texte de la barre de titre */
+.hbox-title .label-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #cd181f;
+}
+
+/* Style pour les boutons */
+.button {
+    -fx-background-color: #cd181f;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Style pour les boutons lorsque survolés */
+.button:hover {
+    -fx-background-color: #9e0e15;
+}
+
+/* Style pour la liste déroulante */
+.combo-box {
+    -fx-pref-width: 150px;
+}
+
+/* Style pour la zone de filtrage */
+.filter-area {
+    -fx-spacing: 10px;
+}
+
+/* Style pour la zone de contenu défilant */
+.scroll-pane-content {
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 10px;
+}
+#placeList {
+    -fx-alignment: center;
+    -fx-spacing: 5;
+    -fx-padding: 10; /* Facultatif : ajout de marge intérieure */
+}
+
+
+/* Style pour la liste de places */
+.place-list {
+    -fx-padding: 10px;
+    -fx-spacing: 5px;
+    -fx-background-color: white;
+    -fx-border-color: #cd181f;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+.scroll-pane {
+    -fx-background-color: #e7e4df;
+    -fx-background-radius: 20px;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: #e7e4df;
+    -fx-background-radius: 20px;
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: #bfbfbf;
+    -fx-background-radius: 20px;
+}
+
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: #bfbfbf;
+    -fx-background-radius: 20px;
+}
+
+.scroll-pane .scroll-bar .increment-button,
+.scroll-pane .scroll-bar .decrement-button {
+    -fx-background-color: #888888;
+}
+.button {
+    -fx-background-radius: 30;
+    -fx-background-color: #ab1924;
+    -fx-text-fill: #383a39;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 119px; /* Pour les boutons dans le VBox */
+    -fx-pref-height: 31px; /* Pour les boutons dans le VBox */
+}
+
+.button:hover {
+    -fx-background-color: #cd181f;
+}
+
+.button:pressed {
+    -fx-background-color: #720000;
+}
+
+/* styles.css */
+.button {
+    -fx-background-radius: 30;
+    -fx-background-color: #ab1924;
+    -fx-text-fill: #383a39;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 100px; /* Réduit la largeur */
+    -fx-pref-height: 32px; /* Réduit la hauteur */
+}
+
+.button:hover {
+    -fx-background-color: #cd181f;
+}
+
+.button:pressed {
+    -fx-background-color: #720000;
+}
+
+
+.scroll-pane .scroll-bar .increment-button:hover,
+.scroll-pane .scroll-bar .decrement-button:hover {
+    -fx-background-color: #666666;
+}
+
+
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #666666;
+}
